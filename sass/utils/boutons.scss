@@ -1,0 +1,60 @@
+button //for tag buttons
+{
+	border-radius: 11px;
+	margin-right: 5px;
+	border: 1px solid $colour-light-grey;
+	cursor: pointer;
+	@include colorway-red-on-white;
+	&:hover {
+		@include colorway-white-on-red;
+		border: 1px solid $colour-primary;
+	}
+}
+
+.tag {
+	@include mobile-500 {
+		font-size: 0.7rem;
+	}
+	&--On {
+		@include colorway-white-on-red;
+		@include mobile-500 {
+			font-size: 0.7rem;
+		}
+	}
+
+	&--Off {
+		@include colorway-red-on-white;
+		@include mobile-500 {
+			font-size: 0.7rem;
+		}
+	}
+}
+.pointer {
+	cursor: pointer;
+}
+.gallery__main__presentation__btn {
+	@include gallery-buttons;
+	&:hover {
+		@include colorway-black-on-salmon;
+		border: none;
+	}
+	@include mobile-800 {
+		position: fixed;
+		left: 50%;
+		bottom: 15vh;
+		transform: translate(-50%, 50%);
+	}
+}
+
+.btn-submit {
+	@include gallery-buttons;
+	font-size: 1rem;
+	padding: 0px 50px;
+	margin-top: $marginH;
+}
+
+#btnClose {
+	//contactmodal
+	color: white;
+	font-size: 2rem;
+}

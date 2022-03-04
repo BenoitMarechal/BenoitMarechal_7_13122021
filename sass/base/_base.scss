@@ -1,0 +1,13 @@
+html,
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+main {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}

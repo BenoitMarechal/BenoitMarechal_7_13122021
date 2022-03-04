@@ -1,0 +1,86 @@
+.main {
+	//see "base" file
+	justify-content: space-around;
+	@include mobile-800 {
+		margin: 20px 0px 0px 0px;
+		padding: 0px;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: center;
+	}
+}
+
+.photographer {
+	width: 30%;
+	margin: $marginH 0 0 0;
+	padding: 0;
+	font-size: 0.8rem;
+	@include mobile-800 {
+		width: 100%;
+		margin: 10px 0px;
+	}
+
+	&__link {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		&__img {
+			object-fit: cover;
+			width: $photographer-avatar-dims-S;
+			height: $photographer-avatar-dims-S;
+			border-radius: 0.5 * $photographer-avatar-dims-S;
+			@include mobile-800 {
+				width: $photographer-avatar-dims-L;
+				height: $photographer-avatar-dims-L;
+				border-radius: 0.5 * $photographer-avatar-dims-L;
+			}
+			@include mobile-450 {
+				width: $photographer-avatar-dims-M;
+				height: $photographer-avatar-dims-M;
+				border-radius: 0.5 * $photographer-avatar-dims-M;
+			}
+		}
+		&__tags {
+			display: flex;
+			justify-content: center;
+			padding-left: 0;
+			@include mobile-800 {
+				margin: 5px;
+			}
+		}
+		&__name {
+			color: $colour-secondary;
+			margin: 0;
+			font-size: 1.8rem;
+		}
+
+		&__location {
+			display: flex;
+			color: $colour-primary;
+			margin: 0;
+			font-size: 1rem;
+			&__city {
+				margin: 2px 0px;
+			}
+
+			&__country {
+				margin: 0;
+				margin: 2px 0px;
+			}
+		}
+
+		&__tagline {
+			color: $colour-black;
+			margin: 0;
+		}
+
+		&__price {
+			color: $colour-grey;
+			margin: 0;
+		}
+		&__tags {
+			margin: 2px 0px;
+		}
+	}
+}

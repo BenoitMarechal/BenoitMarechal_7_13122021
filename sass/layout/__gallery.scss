@@ -1,0 +1,206 @@
+.gallery {
+	&__nav {
+		width: auto;
+		margin: 15px 0px 15px 0px;
+		@include tablet-1200 {
+			margin-left: $marginH;
+		}
+		@include mobile-800 {
+			margin-left: 5px;
+		}
+		@include mobile-450 {
+			margin-left: -5px;
+		}
+		&__logo {
+			margin-left: $marginV;
+			@include tablet-1200 {
+				display: flex !important;
+				margin-left: 0;
+			}
+			@include mobile-420 {
+				margin: 0px;
+			}
+		}
+	}
+
+	&__main {
+		display: block;
+
+		&__presentation {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin: 0px $marginV * 3;
+			@include mobile-800 {
+				margin: 0px $marginV * 1;
+			}
+			@include mobile-420 {
+				margin: 0px $marginV * 0.5;
+			}
+
+			&__info {
+				display: flex;
+				flex-direction: column;
+				@include mobile-600 {
+					max-width: 60%;
+				}
+
+				&__name {
+					justify-content: flex-start;
+					@include mobile-500 {
+						font-size: 1.4rem;
+					}
+					@include mobile-420 {
+						font-size: 1.2rem;
+					}
+				}
+
+				&__location {
+					flex-direction: row;
+					@include mobile-500 {
+						font-size: 0.9rem;
+					}
+					@include mobile-420 {
+						font-size: 0.8rem;
+					}
+				}
+
+				&__tagline {
+					@include mobile-500 {
+						font-size: 0.9rem;
+						overflow-wrap: normal;
+						flex-wrap: wrap;
+					}
+					@include mobile-420 {
+						font-size: 0.8rem;
+						overflow-wrap: normal;
+						flex-wrap: wrap;
+					}
+				}
+				&__tags {
+					flex-wrap: wrap;
+				}
+			}
+			&__img {
+				width: $photographer-avatar-dims-L !important;
+				height: $photographer-avatar-dims-L !important;
+				border-radius: 0.5 * $photographer-avatar-dims-L !important;
+				@include tablet-1200 {
+					width: $photographer-avatar-dims-M !important;
+					height: $photographer-avatar-dims-M !important;
+					border-radius: 0.5 * $photographer-avatar-dims-M !important;
+				}
+				@include mobile-800 {
+					width: $photographer-avatar-dims-M !important;
+					height: $photographer-avatar-dims-M !important;
+					border-radius: 0.5 * $photographer-avatar-dims-M !important;
+				}
+
+				@include mobile-500 {
+					width: $photographer-avatar-dims-S !important;
+					height: $photographer-avatar-dims-S !important;
+					border-radius: 0.5 * $photographer-avatar-dims-S !important;
+				}
+				@include mobile-450 {
+					width: $photographer-avatar-dims-S !important;
+					height: $photographer-avatar-dims-S !important;
+					border-radius: 0.5 * $photographer-avatar-dims-S !important;
+				}
+				@include mobile-420 {
+					width: $photographer-avatar-dims-XS !important;
+					height: $photographer-avatar-dims-XS !important;
+					border-radius: 0.5 * $photographer-avatar-dims-XS !important;
+				}
+			}
+		}
+
+		&__gallery {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			margin-bottom: 60px;
+			width: 100%;
+			height: 100%;
+			margin-top: $marginV;
+
+			&__container {
+				margin: $marginH;
+				flex-direction: column;
+				height: 100%;
+
+				&__thumbnail {
+					object-fit: cover;
+					width: $gallery_container_dim;
+					height: $gallery_container_dim;
+					cursor: pointer;
+					@include mobile-450 {
+						width: $gallery_container_dim_S;
+						height: $gallery_container_dim_S;
+					}
+				}
+
+				&__info {
+					color: $colour-primary;
+					display: flex;
+					justify-content: space-between;
+					margin: $margindefault;
+					font-size: 1.2rem;
+					@include tablet-1200 {
+						font-size: 0.9rem;
+					}
+					&__title {
+						font-size: inherit;
+						font-weight: normal;
+						margin: 0;
+					}
+
+					&__likes {
+						display: flex;
+						&__number {
+							margin-right: 5px;
+						}
+						&__heart {
+							cursor: pointer;
+							border-radius: 0px;
+							border: none;
+							font-size: 1.2rem;
+							&:hover {
+								@include colorway-red-on-white;
+								border: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.bottom {
+	@include colorway-black-on-salmon;
+	border-radius: $radius-small $radius-small 0px 0px;
+	position: fixed;
+	bottom: 0px;
+	right: 30px;
+	font-size: 1.2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px 30px;
+	padding: 20px;
+	width: auto;
+	@include mobile-800 {
+		display: none;
+	}
+	&__likes {
+		display: flex;
+		&__heart {
+			margin-left: 5px;
+		}
+	}
+
+	&__price {
+		margin-left: 30px;
+	}
+}
