@@ -1,13 +1,25 @@
 {
-	"name": "06fisheye",
-	"version": "1.0.0",
-	"description": "FishEye is a platform for photography creators",
-	"main": "fishEye.js",
-	"scripts": {
-		"sass": "sass --watch sass/main.scss:public/css/style.css",
-		"prefix": "postcss public/css/style.css --use autoprefixer -d public/css"
-	},
-	"author": "Benoit Maréchal",
-	"license": "ISC",
-	"browerslist": "last 4 versions"
+  "name": "07plats",
+  "version": "1.0.0",
+  "description": "FishEye is a platform for photography creators",
+  "main": "fishEye.js",
+  "scripts": {
+    "sass": "sass --watch sass/main.scss:public/css/style.css",
+    "prefix": "postcss public/css/style.css --use autoprefixer -d public/css"
+  },
+  "author": "Benoit Maréchal",
+  "license": "ISC",
+  "browerslist": "last 4 versions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenoitMarechal/BenoitMarechal_7_13122021.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BenoitMarechal/BenoitMarechal_7_13122021/issues"
+  },
+  "homepage": "https://github.com/BenoitMarechal/BenoitMarechal_7_13122021#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.3.0",
+    "bootstrap": "^5.1.3"
+  }
 }

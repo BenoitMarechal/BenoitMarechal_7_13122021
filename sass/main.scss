@@ -1,14 +1,43 @@
 @import 'utils/variables';
-@import 'utils/mixins.scss';
-@import 'utils/keyframes';
+//import
+// @import '../node_modules/custom.scss'; //custom
 
-@import 'base/base';
-@import 'base/typography';
+// //custom values
 
-@import 'layout/header';
-@import 'layout/__articles.scss';
-@import 'layout/__gallery.scss';
-@import 'layout/__combobox.scss';
+//import functions and variable
+@import '../node_modules/bootstrap/scss/functions.scss';
+@import '../node_modules/bootstrap/scss/variables.scss';
+//custom color map
+$custom-theme-colors: (
+	'ingredient': #3282f7,
+	'appareil': #68d9a4,
+	'ustensile': #ed6454,
+);
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
 
-@import 'layout/__gallery__modals.scss';
-@import 'utils/boutons.scss';
+.form-control {
+	background-color: unset;
+}
+
+// .col {
+// 	border: 1px solid blue;
+// }
+
+.meal__img {
+	width: 100%;
+	height: 300px;
+}
+// @import 'utils/mixins.scss';
+// @import 'utils/keyframes';
+
+// @import 'base/base';
+// @import 'base/typography';
+
+// @import 'layout/header';
+// @import 'layout/__articles.scss';
+// @import 'layout/__gallery.scss';
+// @import 'layout/__combobox.scss';
+
+// @import 'layout/__gallery__modals.scss';
+// @import 'utils/boutons.scss';

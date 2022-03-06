@@ -1,12 +1,15 @@
-/*Colors*/
-$colour-primary: #901c1c;
 $colour-secondary: #db8876;
 $colour-tertiary: #d3573c;
 $colour-grey: #525252;
-$colour-light-grey: #c4c4c4;
+
+$colour-light-grey: #e7e7e7;
+.bg-light-grey {
+	background-color: $colour-light-grey;
+}
+
 $colour-white: #fff;
 $colour-black: #000000;
-$darken-primary: darken($colour-primary, 5%);
+// $darken-primary: darken($colour-primary, 5%);
 
 /*most common margin values*/
 $marginH: 15px;
