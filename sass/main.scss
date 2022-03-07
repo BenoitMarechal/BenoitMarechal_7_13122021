@@ -1,6 +1,5 @@
+@import 'layout/__combobox';
 @import 'utils/variables';
-//import
-// @import '../node_modules/custom.scss'; //custom
 
 // //custom values
 
@@ -14,6 +13,20 @@ $custom-theme-colors: (
 	'ustensile': #ed6454,
 );
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+.bg-ingredient {
+	background-color: #3282f7;
+	color: white;
+}
+
+.bg-appareil {
+	background-color: #68d9a4;
+	color: white;
+}
+.bg-ustensile {
+	background-color: #ed6454;
+}
+
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 .form-control {
@@ -28,4 +41,7 @@ $theme-colors: map-merge($custom-theme-colors, $theme-colors);
 .meal__txt__lower__ingredient,
 .meal__txt__upper__time {
 	font-weight: 700;
+}
+.hidden {
+	display: none;
 }
