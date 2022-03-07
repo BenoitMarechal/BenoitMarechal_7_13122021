@@ -20,24 +20,12 @@ $theme-colors: map-merge($custom-theme-colors, $theme-colors);
 	background-color: unset;
 }
 
-// .col {
-// 	border: 1px solid blue;
-// }
-
 .meal__img {
 	width: 100%;
 	height: 300px;
 }
-// @import 'utils/mixins.scss';
-// @import 'utils/keyframes';
 
-// @import 'base/base';
-// @import 'base/typography';
-
-// @import 'layout/header';
-// @import 'layout/__articles.scss';
-// @import 'layout/__gallery.scss';
-// @import 'layout/__combobox.scss';
-
-// @import 'layout/__gallery__modals.scss';
-// @import 'utils/boutons.scss';
+.meal__txt__lower__ingredient,
+.meal__txt__upper__time {
+	font-weight: 700;
+}

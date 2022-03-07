@@ -11403,4 +11403,9 @@ textarea.form-control-lg {
   height: 300px;
 }
 
+.meal__txt__lower__ingredient,
+.meal__txt__upper__time {
+  font-weight: 700;
+}
+
 /*# sourceMappingURL=style.css.map */

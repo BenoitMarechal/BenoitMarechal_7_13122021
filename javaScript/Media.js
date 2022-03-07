@@ -1,5 +1,4 @@
 import { dataFromJson } from './FetchData.js';
-
 import { elementsOfMediaArticle } from './utilitaries.js';
 import { utils } from './utilitaries.js';
 
