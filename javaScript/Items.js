@@ -10,16 +10,16 @@ function simplify(string) {
 let elementsOfTagBtn = {
 	typeOfElement: ['div', 'div', 'div', 'div'],
 	classesOfElement: [
-		['col', 'col-2', 'item'],
+		['col', 'col-2', 'item', 'mb-1'],
 		[
 			'item-tag',
 			'rounded',
 			'd-flex',
-			'justify-content-around',
+			'justify-content-between',
 			'align-item-center',
 		],
-		['item-tag__txt'],
-		['item-tag__close'],
+		['item-tag__txt', 'text-truncate', 'mx-2'],
+		['item-tag__close', 'mx-2'],
 	],
 	parentsOfElements: ['', 'item', 'item-tag', 'item-tag'],
 };

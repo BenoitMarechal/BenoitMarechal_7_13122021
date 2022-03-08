@@ -10,7 +10,7 @@ class HomePage {
 		this.writeAllCards();
 		this.getAllItems();
 		this.writeAllTags();
-		this.hideAllTags();
+		//	this.hideAllTags();
 	}
 	getAllRecipes() {
 		this.recipes = [];
