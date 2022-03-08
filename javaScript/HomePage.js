@@ -112,16 +112,16 @@ class HomePage {
 				result.push(page.items[i]);
 			}
 		}
-		console.log(result);
+		//	console.log(result);
 
 		result.splice(0, 0, result[1]);
 		result.splice(2, 1);
-		console.log(result);
+		//	console.log(result);
 
 		page.types = result;
 
 		page.types.forEach((type) => {
-			let line = new DropDown(type);
+			let line = new DropDown(page, type);
 		});
 	}
 }
