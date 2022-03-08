@@ -1,7 +1,3 @@
-// function replaceSpaceByUnderscoreInString(string) {
-// 	var reg = /[-, ]/g;
-// 	return string.replace(reg, '_');
-// }
 function simplify(string) {
 	var reg = /[-, ]/g;
 	return string.replace(reg, '_').toLowerCase();
@@ -41,7 +37,7 @@ export class Item {
 				let element = document.createElement(elementsOfTagBtn.typeOfElement[i]);
 				for (let a = 0; a < elementsOfTagBtn.classesOfElement[i].length; a++) {
 					if (i === 0) {
-						element.id = item.simpName;
+						element.id = 'tag-' + item.simpName;
 					}
 					if (i === 1) {
 						//	console.log('yep');
@@ -64,7 +60,7 @@ export class Item {
 				parent.appendChild(element);
 				//EMPTY ARTICLE CREATED
 			}
-			let articleToFill = document.getElementById(item.simpName);
+			let articleToFill = document.getElementById('tag-' + item.simpName);
 			articleToFill
 				.querySelector('.item-tag__close')
 				.setAttribute('role', 'button');
@@ -75,7 +71,6 @@ export class Item {
 	}
 
 	returnTagButton() {
-		//	console.log(document.getElementById('id' + this.simpName));
 		return document.getElementById(this.simpName);
 	}
 
@@ -86,9 +81,9 @@ export class Item {
 	hideTagButton() {
 		this.returnTagButton().style.display = 'none';
 	}
-	writeDropDown() {}
-	diplayDropDown() {}
-	hideDropDown() {}
+	// writeDropDown() {}
+	// diplayDropDown() {}
+	// hideDropDown() {}
 }
 
 export class Ingredient extends Item {
@@ -97,6 +92,7 @@ export class Ingredient extends Item {
 		this.name = data.ingredient;
 		this.type = 'ingredient';
 		this.simpName = simplify(this.name);
+		this.properName = 'Ingrédients';
 	}
 }
 
@@ -106,6 +102,7 @@ export class Appliance extends Item {
 		this.name = data.appliance;
 		this.type = 'appliance';
 		this.simpName = simplify(this.name);
+		this.properName = 'Appareils';
 	}
 }
 
@@ -116,6 +113,7 @@ export class Ustensil extends Item {
 		this.ustensil = data;
 		this.type = 'ustensil';
 		this.simpName = simplify(this.name);
+		this.properName = 'Ustensiles';
 	}
 }
 

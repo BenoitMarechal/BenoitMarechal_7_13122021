@@ -67,6 +67,20 @@ input:focus {
 	color: lightgray;
 }
 
+nav {
+	position: relative;
+}
+// .item-search {
+// 	position: relative;
+// }
+
+.container-fluid {
+	position: relative;
+	border: 2px solid green;
+}
+.droplist-container {
+	position: absolute;
+}
 // .custom-select select {
 // 	display: none; /*hide original SELECT element:*/
 // }

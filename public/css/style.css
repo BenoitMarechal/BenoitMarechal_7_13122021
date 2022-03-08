@@ -53,6 +53,19 @@ input:focus {
   color: lightgray;
 }
 
+nav {
+  position: relative;
+}
+
+.container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+  position: relative;
+  border: 2px solid green;
+}
+
+.droplist-container {
+  position: absolute;
+}
+
 .bg-light-grey {
   background-color: #e7e7e7;
 }
@@ -2991,9 +3004,6 @@ textarea.form-control-lg {
   .btn {
     transition: none;
   }
-}
-.btn:hover {
-  color: #212529;
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;

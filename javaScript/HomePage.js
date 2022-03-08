@@ -1,6 +1,7 @@
 import { recipes } from './recipes.js';
 import { Meal } from './Meals.js';
 import { Appliance, ItemFactory, Ustensil } from './Items.js';
+import { DropDown } from './Dropdown.js';
 
 //console.log(recipes);
 
@@ -10,7 +11,9 @@ class HomePage {
 		this.writeAllCards();
 		this.getAllItems();
 		this.writeAllTags();
-		//	this.hideAllTags();
+		this.gatherTypes();
+
+		//this.types = [];
 	}
 	getAllRecipes() {
 		this.recipes = [];
@@ -35,7 +38,7 @@ class HomePage {
 		});
 	}
 	getAllItems() {
-		console.log(this.recipes);
+		//console.log(this.recipes);
 		let page = this;
 		page.items = [];
 		let allItems = [];
@@ -56,7 +59,7 @@ class HomePage {
 				allItems.push(new Ustensil(ustensil));
 			});
 		});
-		page.items = allItems;
+		//page.items = allItems;
 		let result = [];
 		for (let i = 0; i < allItems.length; i++) {
 			let found = false;
@@ -69,7 +72,7 @@ class HomePage {
 				result.push(allItems[i]);
 			}
 		}
-		console.log(result);
+		//	console.log(result);
 		page.items = result;
 	}
 
@@ -83,10 +86,24 @@ class HomePage {
 			item.hideTagButton();
 		});
 	}
+	gatherTypes() {
+		let allTypes = [];
+		this.items.forEach((item) => {
+			allTypes.push(item.properName);
+		});
+
+		this.types = [...new Set(allTypes)];
+		//console.log(this);
+	}
 }
+
 let homepage = new HomePage();
 
 console.log(homepage);
+
+// console.log(homepage.types[2]);
+
+let drop = new DropDown(homepage.types[2]);
 
 // homepage.items[0].writeTagButton();
 // homepage.items[0].displayTagButton();

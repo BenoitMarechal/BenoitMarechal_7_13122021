@@ -28,6 +28,17 @@ $theme-colors: map-merge($custom-theme-colors, $theme-colors);
 	color: white;
 }
 
+// .container-fluid {
+// 	border: 5px solid green;
+// }
+
+// .col {
+// 	border: 1px solid blue;
+// }
+
+// .row {
+// 	border: 1px solid orange;
+// }
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 .form-control {

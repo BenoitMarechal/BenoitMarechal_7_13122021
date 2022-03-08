@@ -81,56 +81,68 @@
 
 			<!-- END tags -->
 			<!-- ITEM search form -->
-			<div class="container-fluid item-search w-75">
-				<div class="row">
-					<div
-						class="col col-6 p-0 d-flex bg-ingredient rounded-top justify-content-between"
-					>
-						<input
-							class="item-input w-100 bg-ingredient border-0 rounded"
-							placeholder="Ingrédient"
-							type="text"
-							id="ingredient"
-							name="name"
-							required
-							minlength="4"
-							maxlength="8"
-							size="10"
-						/>
-						<div class="arrow-container rounded-top bg-ingredient">
-							<div class="arrow arrow-up"></div>
+			<div class="container-fluid w-75 p-0">
+				<div class="container-fluid item-search">
+					<div class="row item-search__row">
+						<div
+							class="col col-2 p-0 d-flex bg-ingredient rounded-top justify-content-between item-search__row__col"
+							id="search-ingredient"
+						>
+							<input
+								class="item-input w-100 bg-ingredient border-0 rounded item-search__row__col__input"
+								placeholder="Ingrédients"
+								type="text"
+								id="placeholer-ingredient"
+								name="name"
+								required
+								minlength="4"
+								maxlength="8"
+								size="10"
+							/>
+							<div
+								class="arrow-container rounded-top bg-ingredient item-search__row__col__arrow-container"
+							>
+								<div
+									class="arrow arrow-up item-search__row__col__arrow-container__arrow"
+								></div>
+							</div>
 						</div>
 					</div>
 				</div>
+				<div class="container-fluid droplist-container hidden">
+					<div class="row item-droplist">
+						<div
+							role="button"
+							class="col col-2 d-flex justify-content-between bg-ingredient"
+						>
+							kjkjhkjhkjh
+						</div>
+						<div class="col col-2 d-flex justify-content-between bg-ingredient">
+							kjkjhkjhkjh
+						</div>
+						<div class="col col-2 d-flex justify-content-between bg-ingredient">
+							kjkjhkjhkjh
+						</div>
+					</div>
 
-				<div class="row item-droplist">
-					<div class="col col-2 d-flex justify-content-between bg-ingredient">
-						kjkjhkjhkjh
-					</div>
-					<div class="col col-2 d-flex justify-content-between bg-ingredient">
-						kjkjhkjhkjh
-					</div>
-					<div class="col col-2 d-flex justify-content-between bg-ingredient">
-						kjkjhkjhkjh
-					</div>
-				</div>
-
-				<div class="row item-droplist">
-					<div class="col col-2 d-flex justify-content-between bg-ingredient">
-						kjkjhkjhkjh
-					</div>
-					<div class="col col-2 d-flex justify-content-between bg-ingredient">
-						kjkjhkjhkjh
-					</div>
-					<div class="col col-2 d-flex justify-content-between bg-ingredient">
-						kjkjhkjhkjh
+					<div class="row item-droplist">
+						<div class="col col-2 d-flex justify-content-between bg-ingredient">
+							kjkjhkjhkjh
+						</div>
+						<div class="col col-2 d-flex justify-content-between bg-ingredient">
+							kjkjhkjhkjh
+						</div>
+						<div class="col col-2 d-flex justify-content-between bg-ingredient">
+							kjkjhkjhkjh
+						</div>
 					</div>
 				</div>
 			</div>
+
 			<!-- END ITEM form -->
 		</nav>
-		<main>
-			<div class="container-fluid w-75 mt-n5 main-container">
+		<main class="hidden">
+			<div class="container-fluid w-75 mt-3 main-container">
 				<div class="row cardsGalleryRow">
 					<div class="col col-12 col-sm-4 cardsGalleryCol">
 						<div class="meal">
