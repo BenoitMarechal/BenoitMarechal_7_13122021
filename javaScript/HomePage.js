@@ -11,7 +11,7 @@ class HomePage {
 		this.writeAllCards();
 		this.getAllItems();
 		this.writeAllTags();
-		this.gatherTypes();
+		this.gatherTypes2();
 
 		//this.types = [];
 	}
@@ -38,7 +38,6 @@ class HomePage {
 		});
 	}
 	getAllItems() {
-		//console.log(this.recipes);
 		let page = this;
 		page.items = [];
 		let allItems = [];
@@ -86,14 +85,44 @@ class HomePage {
 			item.hideTagButton();
 		});
 	}
-	gatherTypes() {
-		let allTypes = [];
-		this.items.forEach((item) => {
-			allTypes.push(item.properName);
-		});
+	// gatherTypes() {
+	// 	let allTypes = [];
+	// 	this.items.forEach((item) => {
+	// 		allTypes.push(item.properName);
+	// 	});
 
-		this.types = [...new Set(allTypes)];
-		//console.log(this);
+	// 	this.types = [...new Set(allTypes)];
+	// 	//console.log(this);
+	// }
+
+	gatherTypes2() {
+		let page = this;
+		page.types = [];
+		let allTypes = [];
+		let result = [];
+
+		for (let i = 0; i < page.items.length; i++) {
+			let found = false;
+			for (let a = 0; a < result.length; a++) {
+				if (page.items[i].type === result[a].type) {
+					found = true;
+				}
+			}
+			if (found === false) {
+				result.push(page.items[i]);
+			}
+		}
+		console.log(result);
+
+		result.splice(0, 0, result[1]);
+		result.splice(2, 1);
+		console.log(result);
+
+		page.types = result;
+
+		page.types.forEach((type) => {
+			let line = new DropDown(type);
+		});
 	}
 }
 
@@ -103,7 +132,7 @@ console.log(homepage);
 
 // console.log(homepage.types[2]);
 
-let drop = new DropDown(homepage.types[2]);
+//let drop = new DropDown(homepage.types[2]);
 
 // homepage.items[0].writeTagButton();
 // homepage.items[0].displayTagButton();

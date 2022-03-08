@@ -62,15 +62,15 @@ let elementsOfFirstLine = {
 };
 
 export class DropDown {
-	constructor(type) {
+	constructor(item) {
 		//this.page = page;
-		this.type = type;
+		this.item = item;
 		//console.log(this.type);
 		this.firstline();
 	}
 	firstline() {
 		//console.log(this.type);
-		let itemType = this.type;
+		let itemType = this.item;
 
 		for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
 			let element = document.createElement(
@@ -79,12 +79,12 @@ export class DropDown {
 
 			for (let a = 0; a < elementsOfFirstLine.classesOfElement[i].length; a++) {
 				if (i === 0) {
-					element.id = 'item-search-' + itemType;
+					element.id = 'item-search-' + itemType.simpName;
 				}
 				if (i < elementsOfFirstLine.typeOfElement.length - 1) {
 					//	console.log('yep');
 					//console.log(element);
-					element.classList.add('bg-' + itemType);
+					element.classList.add('bg-' + itemType.type);
 				}
 				element.classList.add(elementsOfFirstLine.classesOfElement[i][a]);
 			}
@@ -97,18 +97,14 @@ export class DropDown {
 			parent.appendChild(element);
 		}
 
-		let articleToFill = document.getElementById('item-search-' + itemType);
-		console.log(articleToFill);
+		let articleToFill = document.getElementById(
+			'item-search-' + itemType.simpName
+		);
+		//console.log(articleToFill);
 
-		console.log(articleToFill.querySelector('.item-search__row__col__input'));
-		console.log(itemType);
+		//console.log(articleToFill.querySelector('.item-search__row__col__input'));
+		//console.log(itemType);
 		articleToFill.querySelector('.item-search__row__col__input').placeholder =
-			itemType;
-		// articleToFill
-		// 	.querySelector('input')
-		// 	.setAttribute('placeholder', itemType);
-		// articleToFill.querySelector('.item-tag__close').innerHTML = '&#215';
-
-		// articleToFill.querySelector('.item-tag__txt').innerText = item.name;
+			itemType.properName;
 	}
 }
