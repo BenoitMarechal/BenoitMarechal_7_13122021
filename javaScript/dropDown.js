@@ -51,47 +51,59 @@ let elementsOfPanel = {
 }
 
 export class DropDown {
-	constructor(page, item) {
+	constructor(page) {
 		this.page = page;
-		this.item = item;
+		//this.item = item;
 		//console.log(this.type);
 		this.firstline();
-		this.fillPanel();
+		//this.fillPanel();
 	}
 	firstline() {
 		//console.log(this.type);
-		let itemType = this.item;
 
-		for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
-			let element = document.createElement(
-				elementsOfFirstLine.typeOfElement[i]
-			);
+		this.page.types.forEach(
+			(type) => {
+				console.log(type);
+				for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
+					let element = document.createElement(
+						elementsOfFirstLine.typeOfElement[i]
+					);
 
-			for (let a = 0; a < elementsOfFirstLine.classesOfElement[i].length; a++) {
-				if (i === 0) {
-					element.id = 'item-search-' + itemType.simpName;
+					for (
+						let a = 0;
+						a < elementsOfFirstLine.classesOfElement[i].length;
+						a++
+					) {
+						if (i === 0) {
+							element.id = 'item-search-' + type.simpName;
+						}
+						if (i < elementsOfFirstLine.typeOfElement.length - 1) {
+							element.classList.add('bg-' + type.type);
+						}
+						element.classList.add(elementsOfFirstLine.classesOfElement[i][a]);
+					}
+
+					let byClass = document.getElementsByClassName(
+						elementsOfFirstLine.parentsOfElements[i]
+					);
+					let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
+					parent.appendChild(element);
 				}
-				if (i < elementsOfFirstLine.typeOfElement.length - 1) {
-					element.classList.add('bg-' + itemType.type);
-				}
-				element.classList.add(elementsOfFirstLine.classesOfElement[i][a]);
+				//empty article created
+
+				let articleToFill = document.getElementById(
+					'item-search-' + type.simpName
+				);
+
+				articleToFill.querySelector(
+					'.item-search__row__col__input'
+				).placeholder = type.properName;
 			}
 
-			let byClass = document.getElementsByClassName(
-				elementsOfFirstLine.parentsOfElements[i]
-			);
-			let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
-			parent.appendChild(element);
-		}
-		//empty article created
-
-		let articleToFill = document.getElementById(
-			'item-search-' + itemType.simpName
+			// let itemType = this.item;
 		);
-
-		articleToFill.querySelector('.item-search__row__col__input').placeholder =
-			itemType.properName;
 	}
+
 	fillPanel() {
 		//find index
 		let panel = this;

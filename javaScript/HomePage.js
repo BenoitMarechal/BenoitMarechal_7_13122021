@@ -12,6 +12,7 @@ class HomePage {
 		this.getAllItems();
 		this.writeAllTags();
 		this.gatherTypes2();
+		this.buildDropDown();
 
 		//this.types = [];
 	}
@@ -119,10 +120,10 @@ class HomePage {
 		//	console.log(result);
 
 		page.types = result;
+	}
 
-		page.types.forEach((type) => {
-			let line = new DropDown(page, type);
-		});
+	buildDropDown() {
+		let menu = new DropDown(this);
 	}
 }
 
