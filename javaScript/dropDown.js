@@ -53,88 +53,99 @@ let elementsOfPanel = {
 export class DropDown {
 	constructor(page) {
 		this.page = page;
-		//this.item = item;
-		//console.log(this.type);
 		this.firstline();
-		//this.fillPanel();
+		this.fillPanel();
 	}
 	firstline() {
-		//console.log(this.type);
-
-		this.page.types.forEach(
-			(type) => {
-				console.log(type);
-				for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
-					let element = document.createElement(
-						elementsOfFirstLine.typeOfElement[i]
-					);
-
-					for (
-						let a = 0;
-						a < elementsOfFirstLine.classesOfElement[i].length;
-						a++
-					) {
-						if (i === 0) {
-							element.id = 'item-search-' + type.simpName;
-						}
-						if (i < elementsOfFirstLine.typeOfElement.length - 1) {
-							element.classList.add('bg-' + type.type);
-						}
-						element.classList.add(elementsOfFirstLine.classesOfElement[i][a]);
-					}
-
-					let byClass = document.getElementsByClassName(
-						elementsOfFirstLine.parentsOfElements[i]
-					);
-					let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
-					parent.appendChild(element);
-				}
-				//empty article created
-
-				let articleToFill = document.getElementById(
-					'item-search-' + type.simpName
+		this.page.types.forEach((type) => {
+			console.log(type);
+			for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
+				let element = document.createElement(
+					elementsOfFirstLine.typeOfElement[i]
 				);
 
-				articleToFill.querySelector(
-					'.item-search__row__col__input'
-				).placeholder = type.properName;
-			}
+				for (
+					let a = 0;
+					a < elementsOfFirstLine.classesOfElement[i].length;
+					a++
+				) {
+					if (i === 0) {
+						element.id = 'item-search-' + type.simpName;
+					}
+					if (i < elementsOfFirstLine.typeOfElement.length - 1) {
+						element.classList.add('bg-' + type.type);
+					}
+					element.classList.add(elementsOfFirstLine.classesOfElement[i][a]);
+				}
 
-			// let itemType = this.item;
-		);
+				let byClass = document.getElementsByClassName(
+					elementsOfFirstLine.parentsOfElements[i]
+				);
+				let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
+				parent.appendChild(element);
+			}
+			//empty article created
+
+			let articleToFill = document.getElementById(
+				'item-search-' + type.simpName
+			);
+
+			articleToFill.querySelector('.item-search__row__col__input').placeholder =
+				type.properName;
+		});
 	}
 
 	fillPanel() {
 		//find index
-		let panel = this;
-		let index = '';
-		//	console.log(panel.page);
-		//	console.log(panel.item);
-		for (let i = 0; i < panel.page.types.length; i++) {
-			console.log(i);
-			console.log(panel.page.types[i].type);
+		console.log(this.page);
+		let mainpage = this.page;
+		let compte = 0;
+		console.log(mainpage);
+
+		for (let a = 0; a < mainpage.items.length; a++) {
+			console.log('cherche');
+			console.log(mainpage.items[a].type);
+			for (let b = 0; b < mainpage.types.length; b++) {
+				console.log('lit');
+				console.log(mainpage.types[b].type);
+
+				if (mainpage.items[a].type === mainpage.types[b].type) {
+					console.log('yes');
+					console.log(b);
+					break;
+				}
+			}
+			//});
+			// let panel = this;
+			// let index = '';
+			// //	console.log(panel.page);
+			// //	console.log(panel.item);
+			// for (let i = 0; i < panel.page.types.length; i++) {
+			// 	console.log(i);
+			// 	console.log(panel.page.types[i].type);
+			// }
+
+			// for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
+			// 	let element = document.createElement(
+			// 		elementsOfFirstLine.typeOfElement[i]
+			// 	);
+
+			// 	for (let a = 0; a < elementsOfFirstLine.classesOfElement[i].length; a++) {
+			// 		if (i === 0) {
+			// 			element.id = 'item-search-' + itemType.simpName;
+			// 		}
+			// 		if (i < elementsOfFirstLine.typeOfElement.length - 1) {
+			// 			element.classList.add('bg-' + itemType.type);
+			// 		}
+			// 		element.classList.add(elementsOfFirstLine.classesOfElement[i][a]);
+			// 	}
+
+			// 	let byClass = document.getElementsByClassName(
+			// 		elementsOfFirstLine.parentsOfElements[i]
+			// 	);
+			// 	let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
+			// 	parent.appendChild(element);
+			// }
 		}
-
-		// for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
-		// 	let element = document.createElement(
-		// 		elementsOfFirstLine.typeOfElement[i]
-		// 	);
-
-		// 	for (let a = 0; a < elementsOfFirstLine.classesOfElement[i].length; a++) {
-		// 		if (i === 0) {
-		// 			element.id = 'item-search-' + itemType.simpName;
-		// 		}
-		// 		if (i < elementsOfFirstLine.typeOfElement.length - 1) {
-		// 			element.classList.add('bg-' + itemType.type);
-		// 		}
-		// 		element.classList.add(elementsOfFirstLine.classesOfElement[i][a]);
-		// 	}
-
-		// 	let byClass = document.getElementsByClassName(
-		// 		elementsOfFirstLine.parentsOfElements[i]
-		// 	);
-		// 	let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
-		// 	parent.appendChild(element);
-		// }
 	}
 }

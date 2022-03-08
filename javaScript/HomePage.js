@@ -129,7 +129,7 @@ class HomePage {
 
 let homepage = new HomePage();
 
-console.log(homepage);
+//console.log(homepage);
 
 // console.log(homepage.types[2]);
 
