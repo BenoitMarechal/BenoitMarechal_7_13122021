@@ -1,6 +1,6 @@
 import { recipes } from './recipes.js';
 import { Meal } from './Meals.js';
-import { Appliance, Ingredient, Item, ItemFactory, Ustensil } from './Items.js';
+import { Appliance, ItemFactory, Ustensil } from './Items.js';
 
 //console.log(recipes);
 
@@ -9,14 +9,15 @@ class HomePage {
 		this.getAllRecipes();
 		this.writeAllCards();
 		this.getAllItems();
+		this.writeAllTags();
+		this.hideAllTags();
 	}
 	getAllRecipes() {
 		this.recipes = [];
 		recipes.forEach((recipe) => {
-			console.log(recipe);
+			//	console.log(recipe);
 			this.recipes.push(new Meal(recipe));
 		});
-		//console.log(this.recipes);
 	}
 	writeAllCards() {
 		this.recipes.forEach((recipe) => {
@@ -35,29 +36,57 @@ class HomePage {
 	}
 	getAllItems() {
 		console.log(this.recipes);
-		this.items = [];
 		let page = this;
-		console.log(page.items);
+		page.items = [];
+		let allItems = [];
 
 		//appliance
 		page.recipes.forEach((recipe) => {
-			//console.log(recipe.appliance);
-
-			page.items.push(new ItemFactory(new Appliance(recipe)));
+			allItems.push(new ItemFactory(new Appliance(recipe)));
 
 			////end appliance
 			////ingredient
 
 			recipe.ingredients.forEach((ingredient) => {
-				page.items.push(new ItemFactory(ingredient));
+				allItems.push(new ItemFactory(ingredient));
 			});
 
 			recipe.ustensils.forEach((ustensil) => {
-				console.log(ustensil);
-				page.items.push(new Ustensil(ustensil));
+				//	console.log(ustensil);
+				allItems.push(new Ustensil(ustensil));
 			});
 		});
-		console.log(this);
+		page.items = allItems;
+		let result = [];
+		for (let i = 0; i < allItems.length; i++) {
+			let found = false;
+			for (let a = 0; a < result.length; a++) {
+				if (allItems[i].simpName === result[a].simpName) {
+					found = true;
+				}
+			}
+			if (found === false) {
+				result.push(allItems[i]);
+			}
+		}
+		console.log(result);
+		page.items = result;
+	}
+
+	writeAllTags() {
+		this.items.forEach((item) => {
+			item.writeTagButton();
+		});
+	}
+	hideAllTags() {
+		this.items.forEach((item) => {
+			item.hideTagButton();
+		});
 	}
 }
 let homepage = new HomePage();
+
+console.log(homepage);
+
+// homepage.items[0].writeTagButton();
+// homepage.items[0].displayTagButton();

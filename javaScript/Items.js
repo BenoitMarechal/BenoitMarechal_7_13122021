@@ -1,63 +1,27 @@
+// function replaceSpaceByUnderscoreInString(string) {
+// 	var reg = /[-, ]/g;
+// 	return string.replace(reg, '_');
+// }
+function simplify(string) {
+	var reg = /[-, ]/g;
+	return string.replace(reg, '_').toLowerCase();
+}
+
 let elementsOfTagBtn = {
-	typeOfElement: [
-		'div',
-		'div',
-		'div',
-		'div',
-		'div',
-		'div',
-		'div',
-		'div',
-		'div',
-		'span',
-		'span',
-		'span',
-		'div',
-	],
+	typeOfElement: ['div', 'div', 'div', 'div'],
 	classesOfElement: [
-		['col', 'col-12', 'col-sm-4', 'cardsGalleryCol'],
-		['meal'],
-		['meal__img', 'text-center', 'bg-dark'],
-		['meal__txt', 'bg-light-grey'],
-		['row', 'meal__txt__upper', 'd-flex', 'justify-content-between'],
-		['col', 'h2', 'col-8', 'meal__txt__upper__title'],
+		['col', 'col-2', 'item'],
 		[
-			'col',
-			'col-4',
-			'meal__txt__upper__time',
+			'item-tag',
+			'rounded',
 			'd-flex',
-			'justify-content-end',
+			'justify-content-around',
 			'align-item-center',
 		],
-		['row', 'meal__txt__lower', 'd-flex', 'justify-content-between'],
-		['col', 'col-8', 'meal__txt__lower__ingredient'],
-		['meal__txt__lower__ingredient__type'],
-		['meal__txt__lower__ingredient__qty'],
-		['meal__txt__lower__ingredient__unit'],
-		[
-			'col',
-			'col-4',
-			'meal__txt__lower__recipe',
-			'd-flex',
-			'justify-content-end',
-			'align-item-center',
-		],
+		['item-tag__txt'],
+		['item-tag__close'],
 	],
-	parentsOfElements: [
-		'cardsGalleryRow',
-		'cardsGalleryCol',
-		'meal',
-		'meal',
-		'meal__txt',
-		'meal__txt__upper',
-		'meal__txt__upper',
-		'meal__txt',
-		'meal__txt__lower',
-		'meal__txt__lower__ingredient',
-		'meal__txt__lower__ingredient',
-		'meal__txt__lower__ingredient',
-		'meal__txt__lower',
-	],
+	parentsOfElements: ['', 'item', 'item-tag', 'item-tag'],
 };
 
 export class Item {
@@ -68,6 +32,63 @@ export class Item {
 		this.type = '';
 		this.name = '';
 	}
+	writeTagButton() {
+		{
+			let item = this;
+			//console.log(item.type);
+			//console.log(this);
+			for (let i = 0; i < elementsOfTagBtn.typeOfElement.length; i++) {
+				let element = document.createElement(elementsOfTagBtn.typeOfElement[i]);
+				for (let a = 0; a < elementsOfTagBtn.classesOfElement[i].length; a++) {
+					if (i === 0) {
+						element.id = item.simpName;
+					}
+					if (i === 1) {
+						//	console.log('yep');
+						//console.log(element);
+						element.classList.add('bg-' + item.type);
+					}
+					element.classList.add(elementsOfTagBtn.classesOfElement[i][a]);
+				}
+
+				let byClass = document.getElementsByClassName(
+					elementsOfTagBtn.parentsOfElements[i]
+				);
+				let parent = '';
+				if (i === 0) {
+					parent = document.getElementById('item-tag__container');
+				} else parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
+				//console.log(parent);
+				//	console.log(element);
+
+				parent.appendChild(element);
+				//EMPTY ARTICLE CREATED
+			}
+			let articleToFill = document.getElementById(item.simpName);
+			articleToFill
+				.querySelector('.item-tag__close')
+				.setAttribute('role', 'button');
+			articleToFill.querySelector('.item-tag__close').innerHTML = '&#215';
+
+			articleToFill.querySelector('.item-tag__txt').innerText = item.name;
+		}
+	}
+
+	returnTagButton() {
+		//	console.log(document.getElementById('id' + this.simpName));
+		return document.getElementById(this.simpName);
+	}
+
+	displayTagButton() {
+		this.returnTagButton().style.display = 'block';
+	}
+
+	hideTagButton() {
+		this.returnTagButton().style.display = 'none';
+	}
+	writeDropDown() {}
+	diplayDropDown() {}
+	hideDropDown() {}
 }
 
 export class Ingredient extends Item {
@@ -75,6 +96,7 @@ export class Ingredient extends Item {
 		super(data);
 		this.name = data.ingredient;
 		this.type = 'ingredient';
+		this.simpName = simplify(this.name);
 	}
 }
 
@@ -83,6 +105,7 @@ export class Appliance extends Item {
 		super(data);
 		this.name = data.appliance;
 		this.type = 'appliance';
+		this.simpName = simplify(this.name);
 	}
 }
 
@@ -92,6 +115,7 @@ export class Ustensil extends Item {
 		this.name = data;
 		this.ustensil = data;
 		this.type = 'ustensil';
+		this.simpName = simplify(this.name);
 	}
 }
 

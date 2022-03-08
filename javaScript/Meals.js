@@ -29,7 +29,14 @@ let elementsOfCards = {
 			'justify-content-end',
 			'align-item-center',
 		],
-		['row', 'meal__txt__lower', 'd-flex', 'justify-content-between'],
+		[
+			'row',
+			'meal__txt__lower',
+			'd-flex',
+			'justify-content-between',
+			'overflow-hidden',
+			'mb-3',
+		],
 		['col', 'col-8', 'meal__txt__lower__ingredient'],
 		['meal__txt__lower__ingredient__type'],
 		['meal__txt__lower__ingredient__qty'],
@@ -74,7 +81,7 @@ export class Meal {
 	}
 	writeCard() {
 		let meal = this;
-		console.log(this);
+		//console.log(this);
 		for (let i = 0; i < elementsOfCards.typeOfElement.length; i++) {
 			let element = document.createElement(elementsOfCards.typeOfElement[i]);
 			for (let a = 0; a < elementsOfCards.classesOfElement[i].length; a++) {

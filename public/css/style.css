@@ -64,13 +64,14 @@ input:focus {
   color: white;
 }
 
-.bg-appareil {
+.bg-appliance {
   background-color: #68d9a4;
   color: white;
 }
 
-.bg-ustensile {
+.bg-ustensil {
   background-color: #ed6454;
+  color: white;
 }
 
 /*!
