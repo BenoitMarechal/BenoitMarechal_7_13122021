@@ -6,7 +6,7 @@ function simplify(string) {
 let elementsOfTagBtn = {
 	typeOfElement: ['div', 'div', 'div', 'div'],
 	classesOfElement: [
-		['col', 'col-2', 'item', 'mb-1'],
+		['col', 'col-12', 'col-sm-6', 'col-md-4', 'col-lg-3', 'item', 'mb-1'],
 		[
 			'item-tag',
 			'rounded',

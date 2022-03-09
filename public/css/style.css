@@ -57,11 +57,6 @@ nav {
   position: relative;
 }
 
-.container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
-  position: relative;
-  border: 2px solid green;
-}
-
 .droplist-container {
   position: absolute;
 }
