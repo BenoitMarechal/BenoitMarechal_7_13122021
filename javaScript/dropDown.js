@@ -114,10 +114,10 @@ export class DropDown {
 			}
 			//empty article created
 
-			// let articleToFill = document.getElementById('item-search-' + type.type);
+			let articleToFill = document.getElementById('item-search-' + type.type);
 
-			// articleToFill.querySelector('.item-search__row__col__input').placeholder =
-			// 	type.properName;
+			articleToFill.querySelector('.item-search__row__col__input').placeholder =
+				type.properName;
 		});
 	}
 
@@ -165,7 +165,10 @@ export class DropDown {
 				let element = document.createElement(
 					elementsOfPannelStructureB.typeOfElement[b]
 				);
-				//console.log(element);
+				console.log(mainpage);
+				if (b === elementsOfPannelStructureB.typeOfElement.length - 1) {
+					element.id = 'droplist-btn-container-' + mainpage.types[a].type;
+				}
 
 				for (
 					let c = 0;
