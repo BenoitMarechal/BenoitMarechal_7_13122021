@@ -13,7 +13,7 @@ let elementsOfFirstLine = {
 		],
 		[
 			'item-input',
-			//'w-100',
+			'w-100',
 			'border-0',
 			'rounded',
 			'item-search__row__col__input',
@@ -82,7 +82,7 @@ export class DropDown {
 		this.writeFirstline();
 		//this.writePannel();
 		this.writePannel2();
-		//this.fillPanel();
+		this.fillPanel();
 	}
 	writeFirstline() {
 		this.page.types.forEach((type) => {
@@ -168,6 +168,7 @@ export class DropDown {
 				console.log(mainpage);
 				if (b === elementsOfPannelStructureB.typeOfElement.length - 1) {
 					element.id = 'droplist-btn-container-' + mainpage.types[a].type;
+					element.classList.add('bg-' + mainpage.types[a].type);
 				}
 
 				for (
@@ -201,24 +202,27 @@ export class DropDown {
 			}
 		}
 	}
-	// fillPanel() {
-	// 	let mainpage = this.page;
-	// 	for (let a = 0; a < mainpage.items.length; a++) {
-	// 		// for (let a = 0; a < 3; a++) {
-	// 		let label = document.createElement('div');
-	// 		label.classList.add('col');
-	// 		label.classList.add('col-4');
-	// 		label.classList.add('bg-' + mainpage.items[a].type);
-	// 		label.innerText = mainpage.items[a].name;
-	// 		console.log(label);
-	// 		console.log(mainpage.items[a]);
-	// 		let parent = document.getElementById(
-	// 			'pannel-container-' + mainpage.items[a].type
-	// 		);
+	fillPanel() {
+		let mainpage = this.page;
+		for (let a = 0; a < mainpage.items.length - 1; a++) {
+			// for (let a = 0; a < 3; a++) {
+			let label = document.createElement('div');
+			label.classList.add('col');
+			label.classList.add('col-4');
+			//label.classList.add('bg-' + mainpage.items[a].type);
+			label.innerText = mainpage.items[a].name;
+			label.id = 'drop-btn-' + mainpage.items[a].simpName;
+			label.setAttribute('role', 'button');
 
-	// 		console.log(parent);
-	// 		//console.log(label);
-	// 		parent.appendChild(label);
-	// 	}
-	// }
+			// console.log(label);
+			// console.log(mainpage.items[a]);
+			let parent = document.getElementById(
+				'droplist-btn-container-' + mainpage.items[a].type
+			);
+
+			console.log(parent);
+			//console.log(label);
+			parent.appendChild(label);
+		}
+	}
 }

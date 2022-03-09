@@ -81,7 +81,9 @@ export class Item {
 	hideTagButton() {
 		this.returnTagButton().style.display = 'none';
 	}
-	// writeDropDown() {}
+	returnDropDown() {
+		return document.getElementById('drop-btn-' + this.simpName);
+	}
 	// diplayDropDown() {}
 	// hideDropDown() {}
 }
