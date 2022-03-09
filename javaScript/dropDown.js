@@ -40,7 +40,7 @@ let elementsOfFirstLine = {
 let elementsOfPannelStructure = {
 	typeOfElement: ['div', 'div', 'div'],
 	classesOfElement: [
-		['row', 'item-droplist', 'w-25'],
+		['row', 'item-droplist', 'w-75', 'm-0'],
 		['col', 'col-2', 'me-1', 'item-droplist__spacer'],
 		['col', 'col-2', 'me-1', 'item-droplist__spacer'],
 	],
@@ -72,7 +72,7 @@ export class DropDown {
 		this.page = page;
 		this.writeFirstline();
 		//this.writePannel();
-		//this.writePannel2();
+		this.writePannel2();
 		//this.fillPanel();
 	}
 	writeFirstline() {
