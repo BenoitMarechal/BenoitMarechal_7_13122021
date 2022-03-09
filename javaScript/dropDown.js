@@ -37,7 +37,7 @@ let elementsOfFirstLine = {
 	],
 };
 
-let elementsOfPannelStructure = {
+let elementsOfPannelStructureA = {
 	typeOfElement: ['div', 'div', 'div'],
 	classesOfElement: [
 		['row', 'item-droplist', 'w-75', 'm-0'],
@@ -49,6 +49,15 @@ let elementsOfPannelStructure = {
 		'item-droplist',
 		'item-droplist',
 	],
+};
+
+let elementsOfPannelStructureB = {
+	typeOfElement: ['div', 'div'],
+	classesOfElement: [
+		['col', 'col-6', 'p-0', 'item-droplist__col'],
+		['row', 'm-0', 'me-1', 'item-droplist__col__row'],
+	],
+	parentsOfElements: ['none', 'item-droplist__col'],
 };
 
 // let elementsPannelItem = {
@@ -105,63 +114,108 @@ export class DropDown {
 			}
 			//empty article created
 
-			let articleToFill = document.getElementById('item-search-' + type.type);
+			// let articleToFill = document.getElementById('item-search-' + type.type);
 
-			articleToFill.querySelector('.item-search__row__col__input').placeholder =
-				type.properName;
+			// articleToFill.querySelector('.item-search__row__col__input').placeholder =
+			// 	type.properName;
 		});
 	}
 
 	writePannel2() {
+		////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 		let mainpage = this.page;
 		for (let a = 0; a < mainpage.types.length; a++) {
 			//a= elements types (de 1 a 3)
 			for (let b = 0; b < a + 1; b++) {
 				//b= enfoncement dans le tableau (mini 1 tour, maxi 4 tours pour une div et trois spacers)
 				let element = document.createElement(
-					elementsOfPannelStructure.typeOfElement[b]
+					elementsOfPannelStructureA.typeOfElement[b]
 				);
 				if (b === 0) {
-					console.log(mainpage.types.indexOf(mainpage.types[a]));
+					//console.log(mainpage.types.indexOf(mainpage.types[a]));
 					element.id = 'pannel-container-' + mainpage.types[a].type;
 				}
 				for (
 					let c = 0;
-					c < elementsOfPannelStructure.classesOfElement[b].length;
+					c < elementsOfPannelStructureA.classesOfElement[b].length;
 					c++
 				) {
 					element.classList.add(
-						elementsOfPannelStructure.classesOfElement[b][c]
+						elementsOfPannelStructureA.classesOfElement[b][c]
 					);
 				}
 
-				console.log(element);
+				//console.log(element);
 				let byClass = document.getElementsByClassName(
-					elementsOfPannelStructure.parentsOfElements[b]
+					elementsOfPannelStructureA.parentsOfElements[b]
 				);
 				let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
 				parent.appendChild(element);
 			}
 		}
-	}
-	fillPanel() {
-		let mainpage = this.page;
-		for (let a = 0; a < mainpage.items.length; a++) {
-			// for (let a = 0; a < 3; a++) {
-			let label = document.createElement('div');
-			label.classList.add('col');
-			label.classList.add('col-4');
-			label.classList.add('bg-' + mainpage.items[a].type);
-			label.innerText = mainpage.items[a].name;
-			console.log(label);
-			console.log(mainpage.items[a]);
-			let parent = document.getElementById(
-				'pannel-container-' + mainpage.items[a].type
-			);
+		///BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+		for (let a = 0; a < mainpage.types.length; a++) {
+			//	console.log('coucou');
+			//	console.log(elementsOfPannelStructureB);
+			for (
+				let b = 0;
+				b < elementsOfPannelStructureB.typeOfElement.length;
+				b++
+			) {
+				let element = document.createElement(
+					elementsOfPannelStructureB.typeOfElement[b]
+				);
+				//console.log(element);
 
-			console.log(parent);
-			//console.log(label);
-			parent.appendChild(label);
+				for (
+					let c = 0;
+					c < elementsOfPannelStructureB.classesOfElement[b].length;
+					c++
+				) {
+					element.classList.add(
+						elementsOfPannelStructureB.classesOfElement[b][c]
+					);
+				}
+
+				//console.log(b);
+				//console.log(element);
+				console.log(elementsOfPannelStructureB.parentsOfElements[b]);
+				let byClass = document.getElementsByClassName(
+					elementsOfPannelStructureB.parentsOfElements[b]
+				);
+				//console.log(byClass);
+				let parent = '';
+				if (b === 0) {
+					parent = document.getElementById(
+						'pannel-container-' + mainpage.types[a].type
+					);
+				} else parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
+				//console.log(parent);
+				//	console.log(element);
+
+				parent.appendChild(element);
+				//EMPTY ARTICLE CREATED
+			}
 		}
 	}
+	// fillPanel() {
+	// 	let mainpage = this.page;
+	// 	for (let a = 0; a < mainpage.items.length; a++) {
+	// 		// for (let a = 0; a < 3; a++) {
+	// 		let label = document.createElement('div');
+	// 		label.classList.add('col');
+	// 		label.classList.add('col-4');
+	// 		label.classList.add('bg-' + mainpage.items[a].type);
+	// 		label.innerText = mainpage.items[a].name;
+	// 		console.log(label);
+	// 		console.log(mainpage.items[a]);
+	// 		let parent = document.getElementById(
+	// 			'pannel-container-' + mainpage.items[a].type
+	// 		);
+
+	// 		console.log(parent);
+	// 		//console.log(label);
+	// 		parent.appendChild(label);
+	// 	}
+	// }
 }
