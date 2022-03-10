@@ -1,5 +1,5 @@
 function simplify(string) {
-	var reg = /[-, ]/g;
+	var reg = /[-,', ]/g;
 	return string.replace(reg, '_').toLowerCase();
 }
 
@@ -14,7 +14,7 @@ let elementsOfTagBtn = {
 			'col-lg-3',
 			'item',
 			'mb-1',
-			'hidden',
+			//'hidden',
 		],
 		[
 			'item-tag',
@@ -162,6 +162,7 @@ export class Ustensil extends Item {
 
 export class ItemFactory {
 	constructor(data) {
+		
 		if (data.ingredient !== undefined) {
 			return new Ingredient(data);
 		}

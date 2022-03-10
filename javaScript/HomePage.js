@@ -13,8 +13,9 @@ class HomePage {
 		this.writeAllTags();
 		this.gatherTypes2();
 		this.buildDropDown();
+		//this.countEachType();
 
-		//this.hideAllTags();
+		this.hideAllTags();
 		this.runTags();
 		this.runDrops();
 
@@ -78,6 +79,41 @@ class HomePage {
 		}
 		//	console.log(result);
 		page.items = result;
+		console.log(page);
+	}
+
+	countEachType() {
+		let page = this;
+		let ingred = 0;
+		let ustens = 0;
+		let appli = 0;
+		let total = 0;
+		for (let i = 0; i < page.items.length; i++) {
+			console.log(page.items[i].type);
+			if (page.items[i].type === 'appliance') {
+				appli++;
+				total++;
+			}
+			if (page.items[i].type === 'ingredient') {
+				ingred++;
+				total++;
+			}
+			if (page.items[i].type === 'ustensil') {
+				ustens++;
+				total++;
+			} else {
+				// console.log('erreur');
+				// console.log(page.items[i]);
+			}
+		}
+		console.log('appli');
+		console.log(appli);
+		console.log('ingred');
+		console.log(ingred);
+		console.log('ustens');
+		console.log(ustens);
+		console.log('total');
+		console.log(total);
 	}
 
 	writeAllTags() {
@@ -134,7 +170,7 @@ class HomePage {
 
 let homepage = new HomePage();
 
-console.log(homepage);
+//console.log(homepage);
 //homepage.items[0].selectOff();
 //homepage.items[1].selectOff();
 // console.log(homepage.types[2]);

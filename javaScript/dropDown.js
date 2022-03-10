@@ -176,7 +176,7 @@ export class DropDown {
 	}
 	fillPanel() {
 		let mainpage = this.page;
-		for (let a = 0; a < mainpage.items.length - 1; a++) {
+		for (let a = 0; a < mainpage.items.length; a++) {
 			let label = document.createElement('div');
 			label.classList.add('col');
 			label.classList.add('col-4');
