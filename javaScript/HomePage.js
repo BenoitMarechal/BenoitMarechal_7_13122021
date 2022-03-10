@@ -11,15 +11,12 @@ class HomePage {
 		this.writeAllCards();
 		this.getAllItems();
 		this.writeAllTags();
-		this.gatherTypes2();
+		this.gatherTypes();
 		this.buildDropDown();
-		//this.countEachType();
-
+		this.writeAllDropDownBtns();
 		this.hideAllTags();
 		this.runTags();
 		this.runDrops();
-
-		//this.types = [];
 	}
 	getAllRecipes() {
 		this.recipes = [];
@@ -79,7 +76,7 @@ class HomePage {
 		}
 		//	console.log(result);
 		page.items = result;
-		console.log(page);
+		//console.log(page);
 	}
 
 	countEachType() {
@@ -137,7 +134,7 @@ class HomePage {
 		});
 	}
 
-	gatherTypes2() {
+	gatherTypes() {
 		let page = this;
 		page.types = [];
 		let allTypes = [];
@@ -164,7 +161,17 @@ class HomePage {
 	}
 
 	buildDropDown() {
-		let menu = new DropDown(this);
+		let page = this;
+		console.log(page);
+		this.types.forEach((type) => {
+			//console.log(type);
+			let menu = new DropDown(this, type);
+		});
+	}
+	writeAllDropDownBtns() {
+		this.items.forEach((item) => {
+			item.writeDropDownButton();
+		});
 	}
 }
 
