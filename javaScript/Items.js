@@ -6,7 +6,16 @@ function simplify(string) {
 let elementsOfTagBtn = {
 	typeOfElement: ['div', 'div', 'div', 'div'],
 	classesOfElement: [
-		['col', 'col-12', 'col-sm-6', 'col-md-4', 'col-lg-3', 'item', 'mb-1'],
+		[
+			'col',
+			'col-12',
+			'col-sm-6',
+			'col-md-4',
+			'col-lg-3',
+			'item',
+			'mb-1',
+			'hidden',
+		],
 		[
 			'item-tag',
 			'rounded',
@@ -71,7 +80,8 @@ export class Item {
 	}
 
 	returnTagButton() {
-		return document.getElementById(this.simpName);
+		//	console.log(document.getElementById('tag-' + this.simpName));
+		return document.getElementById('tag-' + this.simpName);
 	}
 
 	displayTagButton() {
@@ -82,10 +92,41 @@ export class Item {
 		this.returnTagButton().style.display = 'none';
 	}
 	returnDropDown() {
+		console.log(document.getElementById('drop-btn-' + this.simpName));
 		return document.getElementById('drop-btn-' + this.simpName);
 	}
-	// diplayDropDown() {}
-	// hideDropDown() {}
+	diplayDropDown() {
+		this.returnDropDown().style.display = 'block';
+	}
+	hideDropDown() {
+		this.returnDropDown().style.display = 'none';
+	}
+	selectOn() {
+		this.displayTagButton();
+		this.hideDropDown();
+	}
+	selectOff() {
+		//console.log('jhg');
+		this.hideTagButton();
+		this.diplayDropDown();
+	}
+	listenToTag() {
+		let item = this;
+		this.returnTagButton()
+			.querySelector('.item-tag__close')
+			.addEventListener('click', function (e) {
+				console.log(this);
+				item.selectOff();
+			});
+	}
+	listenToDrop() {
+		let item = this;
+		console.log(item.returnTagButton());
+		item.returnDropDown().addEventListener('click', function (e) {
+			console.log('click');
+			item.selectOn();
+		});
+	}
 }
 
 export class Ingredient extends Item {

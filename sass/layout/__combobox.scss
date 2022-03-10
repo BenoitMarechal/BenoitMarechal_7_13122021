@@ -1,8 +1,4 @@
 .arrow-container {
-	//position: relative;
-	//right: 50px;
-	// bottom: 35%;
-	//	background-color: green;
 	cursor: pointer;
 }
 
@@ -14,8 +10,6 @@ main {
 input:focus {
 	outline: none !important;
 	background-color: unset;
-	// border-color: #719ece;
-	// box-shadow: 0 0 10px #719ece;
 }
 .form-control:focus {
 	outline: none !important;

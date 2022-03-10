@@ -60,22 +60,6 @@ let elementsOfPannelStructureB = {
 	parentsOfElements: ['none', 'item-droplist__col'],
 };
 
-// let elementsPannelItem = {
-// 	typeOfElement: ['div', 'div'],
-// 	classesOfElement: [
-// 		['row', 'item-droplist'],
-// 		['col', 'col-2', 'me-1', 'item-droplist__spacer'],
-// 		[
-// 			'col',
-// 			'col-2',
-// 			'd-flex',
-// 			'justify-content-between',
-// 			'item-droplist__value',
-// 		],
-// 	],
-// 	parentsOfElements: ['droplist-container', 'item-droplist', 'item-droplist'],
-// };
-
 export class DropDown {
 	constructor(page) {
 		this.page = page;
@@ -86,7 +70,6 @@ export class DropDown {
 	}
 	writeFirstline() {
 		this.page.types.forEach((type) => {
-			//console.log(type);
 			for (let i = 0; i < elementsOfFirstLine.typeOfElement.length; i++) {
 				let element = document.createElement(
 					elementsOfFirstLine.typeOfElement[i]
@@ -132,7 +115,6 @@ export class DropDown {
 					elementsOfPannelStructureA.typeOfElement[b]
 				);
 				if (b === 0) {
-					//console.log(mainpage.types.indexOf(mainpage.types[a]));
 					element.id = 'pannel-container-' + mainpage.types[a].type;
 				}
 				for (
@@ -145,7 +127,6 @@ export class DropDown {
 					);
 				}
 
-				//console.log(element);
 				let byClass = document.getElementsByClassName(
 					elementsOfPannelStructureA.parentsOfElements[b]
 				);
@@ -155,8 +136,6 @@ export class DropDown {
 		}
 		///BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 		for (let a = 0; a < mainpage.types.length; a++) {
-			//	console.log('coucou');
-			//	console.log(elementsOfPannelStructureB);
 			for (
 				let b = 0;
 				b < elementsOfPannelStructureB.typeOfElement.length;
@@ -165,7 +144,6 @@ export class DropDown {
 				let element = document.createElement(
 					elementsOfPannelStructureB.typeOfElement[b]
 				);
-				console.log(mainpage);
 				if (b === elementsOfPannelStructureB.typeOfElement.length - 1) {
 					element.id = 'droplist-btn-container-' + mainpage.types[a].type;
 					element.classList.add('bg-' + mainpage.types[a].type);
@@ -181,21 +159,15 @@ export class DropDown {
 					);
 				}
 
-				//console.log(b);
-				//console.log(element);
-				console.log(elementsOfPannelStructureB.parentsOfElements[b]);
 				let byClass = document.getElementsByClassName(
 					elementsOfPannelStructureB.parentsOfElements[b]
 				);
-				//console.log(byClass);
 				let parent = '';
 				if (b === 0) {
 					parent = document.getElementById(
 						'pannel-container-' + mainpage.types[a].type
 					);
 				} else parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
-				//console.log(parent);
-				//	console.log(element);
 
 				parent.appendChild(element);
 				//EMPTY ARTICLE CREATED
@@ -205,23 +177,17 @@ export class DropDown {
 	fillPanel() {
 		let mainpage = this.page;
 		for (let a = 0; a < mainpage.items.length - 1; a++) {
-			// for (let a = 0; a < 3; a++) {
 			let label = document.createElement('div');
 			label.classList.add('col');
 			label.classList.add('col-4');
-			//label.classList.add('bg-' + mainpage.items[a].type);
 			label.innerText = mainpage.items[a].name;
 			label.id = 'drop-btn-' + mainpage.items[a].simpName;
 			label.setAttribute('role', 'button');
 
-			// console.log(label);
-			// console.log(mainpage.items[a]);
 			let parent = document.getElementById(
 				'droplist-btn-container-' + mainpage.items[a].type
 			);
 
-			console.log(parent);
-			//console.log(label);
 			parent.appendChild(label);
 		}
 	}

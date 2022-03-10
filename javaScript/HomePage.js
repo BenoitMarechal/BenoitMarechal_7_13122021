@@ -14,6 +14,10 @@ class HomePage {
 		this.gatherTypes2();
 		this.buildDropDown();
 
+		//this.hideAllTags();
+		this.runTags();
+		this.runDrops();
+
 		//this.types = [];
 	}
 	getAllRecipes() {
@@ -86,15 +90,16 @@ class HomePage {
 			item.hideTagButton();
 		});
 	}
-	// gatherTypes() {
-	// 	let allTypes = [];
-	// 	this.items.forEach((item) => {
-	// 		allTypes.push(item.properName);
-	// 	});
-
-	// 	this.types = [...new Set(allTypes)];
-	// 	//console.log(this);
-	// }
+	runTags() {
+		this.items.forEach((item) => {
+			item.listenToTag();
+		});
+	}
+	runDrops() {
+		this.items.forEach((item) => {
+			item.listenToDrop();
+		});
+	}
 
 	gatherTypes2() {
 		let page = this;
@@ -129,8 +134,9 @@ class HomePage {
 
 let homepage = new HomePage();
 
-//console.log(homepage);
-
+console.log(homepage);
+//homepage.items[0].selectOff();
+//homepage.items[1].selectOff();
 // console.log(homepage.types[2]);
 
 //let drop = new DropDown(homepage.types[2]);
