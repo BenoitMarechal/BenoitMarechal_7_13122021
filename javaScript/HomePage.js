@@ -2,6 +2,7 @@ import { recipes } from './recipes.js';
 import { Meal } from './Meals.js';
 import { Appliance, ItemFactory, Ustensil } from './Items.js';
 import { DropDown } from './Dropdown.js';
+import { Search1 } from './Search1.js';
 
 //console.log(recipes);
 
@@ -17,6 +18,7 @@ class HomePage {
 		this.hideAllTags();
 		this.runTags();
 		this.runDrops();
+		this.runSearch();
 	}
 	getAllRecipes() {
 		this.recipes = [];
@@ -77,6 +79,11 @@ class HomePage {
 		//	console.log(result);
 		page.items = result;
 		//console.log(page);
+	}
+	hideAllDropDownButtons() {
+		this.items.forEach((item) => {
+			item.hideDropDown();
+		});
 	}
 
 	countEachType() {
@@ -173,11 +180,15 @@ class HomePage {
 			item.writeDropDownButton();
 		});
 	}
+	runSearch() {
+		//console.log(this);
+		let search = new Search1(this);
+	}
 }
 
 let homepage = new HomePage();
 
-//console.log(homepage);
+console.log(homepage);
 //homepage.items[0].selectOff();
 //homepage.items[1].selectOff();
 // console.log(homepage.types[2]);
