@@ -78,19 +78,6 @@ export class Item {
 			articleToFill.querySelector('.item-tag__txt').innerText = item.name;
 		}
 	}
-	writeDropDownButton() {
-		let currentItem = this;
-		//for (let a = 0; a < mainpage.items.length; a++) {
-		let label = document.createElement('div');
-		label.classList.add('col');
-		label.classList.add('col-4');
-		label.innerText = this.name;
-		label.id = 'drop-btn-' + this.simpName;
-		label.setAttribute('role', 'button');
-		let parent = document.getElementById('droplist-btn-container-' + this.type);
-		parent.appendChild(label);
-		//}
-	}
 
 	returnTagButton() {
 		//	console.log(document.getElementById('tag-' + this.simpName));
@@ -104,9 +91,8 @@ export class Item {
 	hideTagButton() {
 		this.returnTagButton().style.display = 'none';
 	}
-
 	returnDropDown() {
-		//	console.log(document.getElementById('drop-btn-' + this.simpName));
+		console.log(document.getElementById('drop-btn-' + this.simpName));
 		return document.getElementById('drop-btn-' + this.simpName);
 	}
 	diplayDropDown() {
@@ -135,7 +121,7 @@ export class Item {
 	}
 	listenToDrop() {
 		let item = this;
-		//console.log(item.returnTagButton());
+		console.log(item.returnTagButton());
 		item.returnDropDown().addEventListener('click', function (e) {
 			console.log('click');
 			item.selectOn();
@@ -176,6 +162,7 @@ export class Ustensil extends Item {
 
 export class ItemFactory {
 	constructor(data) {
+		
 		if (data.ingredient !== undefined) {
 			return new Ingredient(data);
 		}
