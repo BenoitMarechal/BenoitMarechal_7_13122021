@@ -72,7 +72,6 @@ export class DropDown {
 		//this.hidePannel();
 		this.listenMenu();
 		//this.listenOpenPannel();
-		this.page.test = 'kjh';
 	}
 	testItem() {
 		let menu = this;
@@ -214,7 +213,7 @@ export class DropDown {
 
 	listenMenu() {
 		let menu = this;
-		//	console.log(menu.pannel);
+		console.log(menu.pannel);
 		////click on arrow: Opens/Closes alternatively
 		this.arrow.addEventListener('click', function (e) {
 			console.log('click');
@@ -228,8 +227,8 @@ export class DropDown {
 			});
 		/////click anywhere else
 		document.addEventListener('click', function (e) {
-			//	console.log(e.target);
-			//console.log('bg-' + menu.type.type);
+			console.log(e.target);
+			console.log('bg-' + menu.type.type);
 			// if (menu.mainLine.contains(e.target) || menu.pannel.contains(e.target))
 			if (
 				e.target.classList.contains('bg-' + menu.type.type) ||

@@ -1,4 +1,4 @@
-export function simplify(string) {
+function simplify(string) {
 	var reg = /[-,', ]/g;
 	return string.replace(reg, '_').toLowerCase();
 }

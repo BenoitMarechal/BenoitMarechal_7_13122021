@@ -1,5 +1,3 @@
-import { Appliance, ItemFactory, Ustensil } from './Items.js';
-
 let elementsOfCards = {
 	typeOfElement: [
 		'div',
@@ -19,7 +17,7 @@ let elementsOfCards = {
 	classesOfElement: [
 		['col', 'col-12', 'col-sm-4', 'cardsGalleryCol'],
 		['meal'],
-		['meal__img', 'text-center', 'bg-empty-image'],
+		['meal__img', 'text-center', 'bg-dark'],
 		['meal__txt', 'bg-light-grey'],
 		['row', 'meal__txt__upper', 'd-flex', 'justify-content-between'],
 		['col', 'h2', 'col-8', 'meal__txt__upper__title'],
@@ -79,7 +77,6 @@ export class Meal {
 		this.description = data.description;
 		this.appliance = data.appliance;
 		this.ustensils = data.ustensils;
-		this.groupItems();
 		//this = data;
 	}
 	writeCard() {
@@ -145,7 +142,7 @@ export class Meal {
 		}
 	}
 	returnCard() {
-		//console.log(document.getElementById('id' + this.id));
+		console.log(document.getElementById('id' + this.id));
 		return document.getElementById('id' + this.id);
 	}
 
@@ -155,19 +152,5 @@ export class Meal {
 
 	hideCard() {
 		this.returnCard().style.display = 'none';
-	}
-	groupItems() {
-		this.mealItems = [];
-		//	console.log(this.appliance);
-		this.mealItems.push(new ItemFactory(new Appliance(this)));
-
-		this.ingredients.forEach((ingredient) => {
-			this.mealItems.push(new ItemFactory(ingredient));
-		});
-
-		this.ustensils.forEach((ustensil) => {
-			//	console.log(ustensil);
-			this.mealItems.push(new Ustensil(ustensil));
-		});
 	}
 }
