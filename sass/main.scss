@@ -2,7 +2,7 @@
 @import 'utils/variables';
 
 // //custom values
-
+$btn-active-box-shadow: inset 0 0px 0px rgba(transparent, 0.125) !default;
 //import functions and variable
 @import '../node_modules/bootstrap/scss/functions.scss';
 @import '../node_modules/bootstrap/scss/variables.scss';
@@ -12,7 +12,7 @@ $custom-theme-colors: (
 	'appareil': #68d9a4,
 	'ustensile': #ed6454,
 );
-$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+//$btn-active-box-shadow: inset 0 0px 0px rgba(transparent, 0.125) !default;
 
 .bg-ingredient {
 	background-color: #3282f7;

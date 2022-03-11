@@ -1,5 +1,6 @@
 .arrow-container {
 	cursor: pointer;
+	z-index: 2;
 }
 
 main {
@@ -18,6 +19,7 @@ input:focus {
 }
 
 .arrow {
+	z-index: -1;
 	position: relative;
 	right: 0px;
 	top: -6px;
@@ -30,12 +32,12 @@ input:focus {
 	//background-color: blue;
 }
 
-.arrow:active {
-	// box-shadow: 2px -2px 0 2px orchid inset;
-	// -webkit-box-shadow: 4px -4px orchid inset;
-	transform: rotate(-45deg);
-	top: 6px;
-}
+// .arrow:hover {
+// 	// box-shadow: 2px -2px 0 2px orchid inset;
+// 	// -webkit-box-shadow: 4px -4px orchid inset;
+// 	transform: rotate(-45deg);
+// 	top: 6px;
+// }
 
 // .arrow:focus {
 // 	// box-shadow: 2px -2px 0 2px orchid inset;
@@ -45,13 +47,15 @@ input:focus {
 // }
 
 .arrow-up {
-	transform: rotate(135deg);
+	transform: rotate(135deg) !important;
+	top: -6px !important;
 }
 .arrow-right {
 	transform: rotate(225deg);
 }
 .arrow-down {
 	transform: rotate(-45deg);
+	top: 10px;
 }
 .arrow-left {
 	transform: rotate(45deg);
@@ -181,3 +185,6 @@ nav {
 // 	width: 80%;
 // 	height: 2px;
 // }
+.item-droplist__col__row {
+	border-radius: 0px 5px 5px 5px;
+}
