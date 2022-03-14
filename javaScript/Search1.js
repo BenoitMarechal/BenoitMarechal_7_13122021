@@ -1,7 +1,7 @@
 import { simplify } from './Items.js';
 //import { Meal } from './Meals.js';
 //import { Item } from './Items.js';
-console.log(simplify('jhg jhg'));
+//console.log(simplify('jhg jhg'));
 
 export class Search1 {
 	constructor(page) {
@@ -38,13 +38,17 @@ export class Search1 {
 		});
 	}
 	selectRecipes(string) {
+		// = boucles natives = implementation1
 		this.selectedRecipes = [];
 		for (let a = 0; a < this.page.recipes.length; a++) {
 			if (this.page.recipes[a].name.toLowerCase().includes(string) === true) {
 				this.selectedRecipes.push(this.page.recipes[a]);
 			}
 		}
+		/////RAJOUTER LES DEUX AUTRES CRITERES
+		/////REGLER PROBLEME PANNEL
 	}
+	// Implementation2: map
 	recipesActionSequence() {
 		this.page.hideAllCards();
 		this.refreshRecipeCards();
@@ -72,36 +76,45 @@ export class Search1 {
 		let page = this;
 		this.page.types.forEach((type) => {
 			let query = 'input.bg-' + type.type;
-			console.log(query);
 			let input = document.querySelector(query);
-
+			console.log(input);
 			input.addEventListener('input', function (e) {
-				page.page.hideAllDropDownButtons();
+				console.log(this.value);
+				// page.page.hideAllDropDownButtons();
 				page.itemSearch = this.value;
+				console.log(page);
 				page.formId = type.type;
-				page.findTextInItems(page.itemSearch, type.type);
+				page.findTextInItems(page.itemSearch, page.formId);
 			});
 		});
 	}
 	findTextInItems(string, type) {
-		// console.log(string);
-		// console.log(type);
+		//console.log(string);
+		console.log(type);
 		this.page.items.forEach((item) => {
-			//console.log(item.name.toLowerCase().includes(string.toLowerCase()));
-			//console.log(item.type.includes(type));
-			if (
-				item.name.toLowerCase().includes(string.toLowerCase()) === true &&
-				item.type.includes(type) === false
-			) {
-				console.log('coucou');
-				console.log(item.name);
-				if (item.returnTagButton().style.display === 'none') {
+			if (item.type === type) {
+				item.hideDropDown();
+				// console.log(item)
+				// console.log()
+				//console.log(item.name.toLowerCase().includes(string.toLowerCase()));
+				//console.log(item.type.includes(type));
+				if (
+					item.name.toLowerCase().includes(string.toLowerCase()) === true
+					//&&
+					//item.type === type
+				) {
 					item.diplayDropDown();
+					// //ole.log('coucou');
+					// //console.log(item.name);
+					// //console.log(item.type);
+					// if (item.returnTagButton().style.display === 'none') {
+
+					// }
+				} else {
+					//console.log('pas concerné');
+					//console.log(item);
+					//console.log(type);
 				}
-			} else {
-				//console.log('pas concerné');
-				//console.log(item);
-				//console.log(type);
 			}
 		});
 	}

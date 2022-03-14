@@ -228,7 +228,7 @@ export class DropDown {
 			});
 		/////click anywhere else
 		document.addEventListener('click', function (e) {
-			//	console.log(e.target);
+			//console.log(e.target);
 			//console.log('bg-' + menu.type.type);
 			// if (menu.mainLine.contains(e.target) || menu.pannel.contains(e.target))
 			if (
@@ -236,12 +236,12 @@ export class DropDown {
 				e.target.parentNode.classList.contains('bg-' + menu.type.type) ||
 				menu.arrow.contains(e.target)
 			) {
-				//e.preventDefault();
+				e.preventDefault();
 			} else {
 				menu.hidePannel();
 			}
 		});
-		/////echap
+		///echap
 		document.addEventListener('keydown', function (e) {
 			if (e.key == 'Escape') {
 				menu.hidePannel();

@@ -188,7 +188,7 @@ class HomePage {
 
 let homepage = new HomePage();
 
-console.log(homepage);
+//console.log(homepage);
 //homepage.items[0].selectOff();
 //homepage.items[1].selectOff();
 // console.log(homepage.types[2]);
