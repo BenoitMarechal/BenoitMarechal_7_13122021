@@ -41,20 +41,27 @@ export class Search1 {
 		// = boucles natives = implementation1
 		this.selectedRecipes = [];
 		for (let a = 0; a < this.page.recipes.length; a++) {
-			console.log(
-				this.page.recipes[a].description.toLowerCase().includes(string)
-			);
+			let ingredientFound = false;
+			this.page.recipes[a].ingredients.forEach((ingredient) => {
+				if (ingredient.ingredient.toLowerCase().includes(string)) {
+					ingredientFound = true;
+				}
+			});
+
+			console.log(this.page.recipes[a].ingredients);
 
 			if (
 				/// recherche titre
+				ingredientFound ||
 				this.page.recipes[a].name.toLowerCase().includes(string) ||
 				this.page.recipes[a].description.toLowerCase().includes(string)
 			) {
-				///recherche description
-				///||(this.page.recipes[a].name.toLowerCase().includes(string) === true))
-				console.log(this.selectedRecipes);
 				this.selectedRecipes.push(this.page.recipes[a]);
+				console.log(this.selectedRecipes);
 			}
+			// else {this.page.recipes[a].ingredients.forEach((ingredient) => {
+			// 	console.log(ingredient.ingredient.toLowerCase().includes(string));
+			// });}
 		}
 		/////RAJOUTER LES DEUX AUTRES CRITERES
 		/////REGLER PROBLEME PANNEL
