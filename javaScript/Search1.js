@@ -41,7 +41,18 @@ export class Search1 {
 		// = boucles natives = implementation1
 		this.selectedRecipes = [];
 		for (let a = 0; a < this.page.recipes.length; a++) {
-			if (this.page.recipes[a].name.toLowerCase().includes(string) === true) {
+			console.log(
+				this.page.recipes[a].description.toLowerCase().includes(string)
+			);
+
+			if (
+				/// recherche titre
+				this.page.recipes[a].name.toLowerCase().includes(string) ||
+				this.page.recipes[a].description.toLowerCase().includes(string)
+			) {
+				///recherche description
+				///||(this.page.recipes[a].name.toLowerCase().includes(string) === true))
+				console.log(this.selectedRecipes);
 				this.selectedRecipes.push(this.page.recipes[a]);
 			}
 		}
@@ -87,6 +98,7 @@ export class Search1 {
 				page.findTextInItems(page.itemSearch, page.formId);
 			});
 		});
+		console.log(this);
 	}
 	findTextInItems(string, type) {
 		//console.log(string);
