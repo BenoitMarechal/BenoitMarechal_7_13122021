@@ -1,4 +1,4 @@
-import { simplify } from './Items.js';
+//import { simplify } from './Items.js';
 //import { Meal } from './Meals.js';
 //import { Item } from './Items.js';
 //console.log(simplify('jhg jhg'));
@@ -9,6 +9,13 @@ export class Search1 {
 		//this.ShownItems = [];
 		this.listenToTextArea();
 		this.itemSearch();
+		this.upDateActiveFilters();
+		this.selectedRecipes = this.page.recipes;
+	}
+
+	remove(array, element) {
+		const index = array.indexOf(element);
+		array.splice(index, 1);
 	}
 
 	listenToTextArea() {
@@ -18,7 +25,7 @@ export class Search1 {
 		textArea.addEventListener('input', function (e) {
 			page.mainSearch = '';
 			page.mainSearch = this.value.toLowerCase();
-			page.selectRecipes(page.mainSearch);
+			page.selectRecipes();
 
 			if (page.mainSearch.length > 2) {
 				searchOn = true;
@@ -37,9 +44,11 @@ export class Search1 {
 			}
 		});
 	}
-	selectRecipes(string) {
+	selectRecipes() {
 		// = boucles natives = implementation1
-		this.selectedRecipes = [];
+		let string = this.mainSearch;
+		this.selectedRecipes = this.page.recipes;
+		console.log(this);
 		for (let a = 0; a < this.page.recipes.length; a++) {
 			let ingredientFound = false;
 			this.page.recipes[a].ingredients.forEach((ingredient) => {
@@ -48,17 +57,21 @@ export class Search1 {
 				}
 			});
 
-			console.log(this.page.recipes[a].ingredients);
+			//console.log(this.page.recipes[a].ingredients);
 
 			if (
 				/// recherche titre
-				ingredientFound ||
-				this.page.recipes[a].name.toLowerCase().includes(string) ||
-				this.page.recipes[a].description.toLowerCase().includes(string)
+				ingredientFound === false &&
+				this.page.recipes[a].name.toLowerCase().includes(string) == false &&
+				this.page.recipes[a].description.toLowerCase().includes(string) ===
+					false
 			) {
-				this.selectedRecipes.push(this.page.recipes[a]);
-				console.log(this.selectedRecipes);
+				this.remove(this.selectedRecipes, this.page.recipes[a]);
 			}
+			// {
+			// 	this.selectedRecipes.push(this.page.recipes[a]);
+			// 	console.log(this.selectedRecipes);
+			// }
 			// else {this.page.recipes[a].ingredients.forEach((ingredient) => {
 			// 	console.log(ingredient.ingredient.toLowerCase().includes(string));
 			// });}
@@ -95,7 +108,7 @@ export class Search1 {
 		this.page.types.forEach((type) => {
 			let query = 'input.bg-' + type.type;
 			let input = document.querySelector(query);
-			console.log(input);
+			//console.log(input);
 			input.addEventListener('input', function (e) {
 				console.log(this.value);
 				// page.page.hideAllDropDownButtons();
@@ -136,5 +149,47 @@ export class Search1 {
 				}
 			}
 		});
+	}
+	upDateActiveFilters() {
+		let main = this;
+		main.activeFilters = [];
+		//console.log(main.page.items);
+		main.page.items.forEach((item) => {
+			item.returnDropDown().addEventListener('click', function (e) {
+				main.activeFilters.push(item.name);
+				console.log('main');
+				main.filterRecipes();
+			});
+			item.returnTagButton().addEventListener('click', function (e) {
+				main.remove(main.activeFilters, item.name);
+				console.log(main);
+				main.filterRecipes();
+			});
+		});
+	}
+
+	filterRecipes() {
+		let main = this;
+		console.log('cocou3');
+		main.page.recipes.forEach(
+			(recipe) => {
+				recipe.tagSearched = false;
+				let matches = 0;
+				for (let a = 0; a < recipe.mealItems.length; a++) {
+					for (let b = 0; b < main.currentTags.length; b++) {
+						if (recipe.mealItems[a].name === main.currentTags[b]) {
+							matches++;
+						}
+					}
+				}
+				console.log(recipe);
+				console.log(matches);
+				if (matches === main.currentTags.length) {
+					recipe.searchedByTags = true;
+				}
+			}
+
+			//main.page.recipesActionSequence();
+		);
 	}
 }

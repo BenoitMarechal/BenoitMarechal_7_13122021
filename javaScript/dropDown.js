@@ -198,10 +198,13 @@ export class DropDown {
 	}
 	hidePannel() {
 		this.pannel.classList.add('hidden');
+		this.arrow.firstChild.classList.remove('arrow-up');
+		console.log('hide');
 	}
 	displayPannel() {
 		this.pannel.classList.remove('hidden');
 		this.arrow.firstChild.classList.add('arrow-up');
+		console.log('display');
 		//this.arrow.firstChild.classList.toggle('arrow-up');
 		//this.pannel.style.display = 'flex';
 		//this.arrow.firstChild.classList.toggle('arrow-up');
@@ -210,6 +213,7 @@ export class DropDown {
 		//this.pannel.style.display = 'flex';
 		this.pannel.classList.toggle('hidden');
 		this.arrow.firstChild.classList.toggle('arrow-up');
+		console.log('hideshow');
 	}
 
 	listenMenu() {
@@ -220,7 +224,7 @@ export class DropDown {
 			console.log('click');
 			menu.hideShowPannel();
 		});
-		////click on text area: Opens if closed, on firts click only
+		////click on text area: Opens if closed, on fisrt click only
 		this.mainLine
 			.querySelector('input')
 			.addEventListener('click', function (e) {
@@ -228,10 +232,14 @@ export class DropDown {
 			});
 		/////click anywhere else
 		document.addEventListener('click', function (e) {
-			//console.log(e.target);
+			// console.log(e.target);
+			// console.log(e.target.parentNode);
+			if (e.target.parentNode === document) {
+				menu.hidePannel();
+			}
 			//console.log('bg-' + menu.type.type);
 			// if (menu.mainLine.contains(e.target) || menu.pannel.contains(e.target))
-			if (
+			else if (
 				e.target.classList.contains('bg-' + menu.type.type) ||
 				e.target.parentNode.classList.contains('bg-' + menu.type.type) ||
 				menu.arrow.contains(e.target)

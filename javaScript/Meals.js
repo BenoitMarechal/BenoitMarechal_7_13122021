@@ -80,7 +80,9 @@ export class Meal {
 		this.appliance = data.appliance;
 		this.ustensils = data.ustensils;
 		this.groupItems();
-		//this = data;
+		this.textSearched = true;
+		this.tagSearched = true;
+		this.visible = true;
 	}
 	writeCard() {
 		let meal = this;
@@ -155,6 +157,16 @@ export class Meal {
 
 	hideCard() {
 		this.returnCard().style.display = 'none';
+	}
+
+	upDateCard() {
+		if (this.textSearched === true && this.tagSearched === true) {
+			this.visible = true;
+			this.displayCard();
+		} else {
+			this.visible = false;
+			this.hideCard();
+		}
 	}
 	groupItems() {
 		this.mealItems = [];

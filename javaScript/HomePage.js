@@ -3,6 +3,7 @@ import { Meal } from './Meals.js';
 import { Appliance, ItemFactory, Ustensil } from './Items.js';
 import { DropDown } from './Dropdown.js';
 import { Search1 } from './Search1.js';
+import { Search2 } from './Search2.js';
 
 //console.log(recipes);
 
@@ -12,10 +13,10 @@ class HomePage {
 		this.writeAllCards();
 		this.getAllItems();
 		this.writeAllTags();
+		this.hideAllTags();
 		this.gatherTypes();
 		this.buildDropDown();
 		this.writeAllDropDownBtns();
-		this.hideAllTags();
 		this.runTags();
 		this.runDrops();
 		this.runSearch();
@@ -41,6 +42,13 @@ class HomePage {
 		this.recipes.forEach((recipe) => {
 			recipe.displayCard();
 		});
+	}
+
+	refreshPage() {
+		this.recipes.forEach((recipe) => {
+			recipe.upDateCard();
+		});
+		this.setAllDropDowns();
 	}
 	getAllItems() {
 		let page = this;
@@ -80,9 +88,9 @@ class HomePage {
 		page.items = result;
 		//console.log(page);
 	}
-	hideAllDropDownButtons() {
+	setAllDropDownFalse() {
 		this.items.forEach((item) => {
-			item.hideDropDown();
+			item.visible = false;
 		});
 	}
 
@@ -180,9 +188,51 @@ class HomePage {
 			item.writeDropDownButton();
 		});
 	}
+
+	setAllDropDowns() {
+		let main = this;
+		main.setAllDropDownFalse();
+		//	console.log('setAllDropDownFalse');
+		//console.log(main);
+		main.recipes.forEach((recipe) => {
+			if (recipe.visible === true) {
+				//	console.log(recipe);
+				for (let a = 0; a < recipe.mealItems.length; a++) {
+					//console.log(recipe.mealItems[a]);
+					{
+						for (let b = 0; b < main.items.length; b++) {
+							//console.log(recipe.mealItems[a].name);
+							//console.log(main.items[b].name);
+							if (recipe.mealItems[a].name === main.items[b].name) {
+								//console.log(main.items[b]);
+								main.items[b].visible = true;
+								//console.log('set to true');
+							}
+						}
+					}
+				}
+			}
+		});
+		//console.log(main);
+		main.updateDropDowns();
+	}
+
+	updateDropDowns() {
+		//this.setAllDropDownFalse();
+		this.items.forEach((item) => {
+			if (item.visible === true) {
+				item.diplayDropDown();
+			}
+			if (item.visible === false) {
+				item.hideDropDown();
+			}
+			//else ;
+		});
+	}
+
 	runSearch() {
 		//console.log(this);
-		let search = new Search1(this);
+		let search = new Search2(this);
 	}
 }
 

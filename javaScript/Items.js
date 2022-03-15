@@ -36,6 +36,7 @@ export class Item {
 		this.ustensil = data.ustensil;
 		this.type = '';
 		this.name = '';
+		this.visible = true;
 	}
 	writeTagButton() {
 		{
@@ -98,7 +99,9 @@ export class Item {
 	}
 
 	displayTagButton() {
-		this.returnTagButton().style.display = 'block';
+		if (this.visible === true) {
+			this.returnTagButton().style.display = 'block';
+		}
 	}
 
 	hideTagButton() {
@@ -139,7 +142,7 @@ export class Item {
 		let item = this;
 		//console.log(item.returnTagButton());
 		item.returnDropDown().addEventListener('click', function (e) {
-			console.log('click');
+			//console.log('click');
 			item.selectOn();
 		});
 	}
