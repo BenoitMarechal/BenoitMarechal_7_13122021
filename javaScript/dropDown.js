@@ -199,12 +199,12 @@ export class DropDown {
 	hidePannel() {
 		this.pannel.classList.add('hidden');
 		this.arrow.firstChild.classList.remove('arrow-up');
-		console.log('hide');
+		console.log('hidden pannel');
 	}
 	displayPannel() {
 		this.pannel.classList.remove('hidden');
 		this.arrow.firstChild.classList.add('arrow-up');
-		console.log('display');
+		console.log('display pannel');
 		//this.arrow.firstChild.classList.toggle('arrow-up');
 		//this.pannel.style.display = 'flex';
 		//this.arrow.firstChild.classList.toggle('arrow-up');
@@ -256,17 +256,4 @@ export class DropDown {
 			}
 		});
 	}
-
-	// listenOpenPannel() {
-	// 	let menu = this;
-	// 	this.arrow.addEventListener('click', function (e) {
-	// 		menu.displayPannel();
-	// 	});
-	// 	console.log(this.mainLine.querySelector('input'));
-	// 	this.mainLine
-	// 		.querySelector('input')
-	// 		.addEventListener('click', function (e) {
-	// 			menu.displayPannel();
-	// 		});
-	// }
 }

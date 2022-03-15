@@ -113,10 +113,11 @@ export class Item {
 		return document.getElementById('drop-btn-' + this.simpName);
 	}
 	diplayDropDown() {
-		if (this.returnTagButton().style.display === 'none') {
-			this.returnDropDown().style.display = 'block';
-		}
+		//if (this.returnTagButton().style.display === 'none') {
+		this.returnDropDown().style.display = 'block';
+		//}
 	}
+
 	hideDropDown() {
 		this.returnDropDown().style.display = 'none';
 	}
