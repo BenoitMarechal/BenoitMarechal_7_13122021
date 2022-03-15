@@ -63,6 +63,9 @@ export class Search2 {
 				main.currentTags.push(item.name);
 				console.log(main);
 				main.selectRecipesFromTags();
+				main.allItemInputs.forEach((input) => {
+					input.value = '';
+				});
 			});
 			item.returnTagButton().addEventListener('click', function (e) {
 				main.remove(main.currentTags, item.name);
@@ -83,9 +86,6 @@ export class Search2 {
 					}
 				}
 			}
-			// console.log(recipe);
-			// console.log(matches);
-			// console.log(main.currentTags.length);
 			if (matches === main.currentTags.length) {
 				recipe.tagSearched = true;
 			}
@@ -95,10 +95,16 @@ export class Search2 {
 
 	itemSearch() {
 		let main = this;
+		main.allItemInputs = [];
+		console.log(main);
 		main.page.types.forEach((type) => {
 			let query = 'input.bg-' + type.type;
 			let input = document.querySelector(query);
-			//console.log(input);
+			console.log(input);
+			console.log('hey');
+			main.allItemInputs.push(input);
+			console.log(main);
+
 			input.addEventListener('input', function (e) {
 				// page.page.hideAllDropDownButtons();
 				main.itemSearch = this.value.toLowerCase();
@@ -106,15 +112,15 @@ export class Search2 {
 				main.findTextInItems(main.itemSearch, main.formId);
 			});
 		});
-		console.log(this);
+		//console.log(this);
 	}
 	findTextInItems(string, type) {
-		console.log(string);
-		console.log(type);
-		console.log(this);
+		// console.log(string);
+		// console.log(type);
+		// console.log(this);
 		this.page.items.forEach((item) => {
 			if (item.type === type) {
-				console.log(item);
+				//console.log(item);
 				item.visible = false;
 				// console.log(item)
 				// console.log()
