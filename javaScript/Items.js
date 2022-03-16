@@ -115,11 +115,16 @@ export class Item {
 	diplayDropDown() {
 		//if (this.returnTagButton().style.display === 'none') {
 		this.returnDropDown().style.display = 'block';
+		this.visible = true;
+		console.log('showed DropDown' + this.name + this.visible);
 		//}
 	}
 
 	hideDropDown() {
 		this.returnDropDown().style.display = 'none';
+		this.visible = false;
+		console.log('hidDropDown' + this.name + this.visible);
+		//console.log()
 	}
 	selectOn() {
 		this.displayTagButton();

@@ -196,17 +196,15 @@ class HomePage {
 		//console.log(main);
 		main.recipes.forEach((recipe) => {
 			if (recipe.visible === true) {
-				//	console.log(recipe);
 				for (let a = 0; a < recipe.mealItems.length; a++) {
-					//console.log(recipe.mealItems[a]);
 					{
 						for (let b = 0; b < main.items.length; b++) {
-							//console.log(recipe.mealItems[a].name);
-							//console.log(main.items[b].name);
-							if (recipe.mealItems[a].name === main.items[b].name) {
-								//console.log(main.items[b]);
+							//console.log(main.items[b].returnTagButton());
+							if (
+								recipe.mealItems[a].name === main.items[b].name &&
+								main.items[b].returnTagButton().style.display !== 'block'
+							) {
 								main.items[b].visible = true;
-								//console.log('set to true');
 							}
 						}
 					}
