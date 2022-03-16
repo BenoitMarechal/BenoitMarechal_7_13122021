@@ -66,12 +66,15 @@ export class Search2 {
 				main.allItemInputs.forEach((input) => {
 					input.value = '';
 				});
-			});
-			item.returnTagButton().addEventListener('click', function (e) {
-				main.remove(main.currentTags, item.name);
-				console.log(main);
-				main.selectRecipesFromTags();
-			});
+			}); //pointer sur la croix
+			item
+				.returnTagButton()
+				.querySelector('.item-tag__close')
+				.addEventListener('click', function (e) {
+					main.remove(main.currentTags, item.name);
+					console.log(main);
+					main.selectRecipesFromTags();
+				});
 		});
 	}
 	selectRecipesFromTags() {
@@ -119,31 +122,13 @@ export class Search2 {
 		// console.log(type);
 		// console.log(this);
 		this.page.items.forEach((item) => {
-			if (item.type === type) {
-				//console.log(item);
-				item.visible = false;
-				// console.log(item)
-				// console.log()
-				//console.log(item.name.toLowerCase().includes(string.toLowerCase()));
-				//console.log(item.type.includes(type));
-				if (
-					item.name.toLowerCase().includes(string) === true
-					//&&
-					//item.type === type
-				) {
-					item.visible = true;
-					// //ole.log('coucou');
-					// //console.log(item.name);
-					// //console.log(item.type);
-					// if (item.returnTagButton().style.display === 'none') {
-
-					// }
+			if (item.visible === true) {
+				if (item.type === type) {
+					item.visible = false;
+					if (item.name.toLowerCase().includes(string) === true) {
+						item.visible = true;
+					}
 				}
-				// else {
-				// 	//console.log('pas concerné');
-				// 	//console.log(item);
-				// 	//console.log(type);
-				// }
 			}
 		});
 		this.page.updateDropDowns();
