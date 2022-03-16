@@ -19,7 +19,7 @@ export class Search2 {
 		let textArea = document.querySelector('input');
 		textArea.addEventListener('input', function (e) {
 			main.mainSearch = this.value.toLowerCase();
-			console.log(main);
+			//console.log(main);
 			if (main.mainSearch.length > 2) {
 				main.searchOn = true;
 			}
@@ -28,7 +28,6 @@ export class Search2 {
 	}
 	searchFromText() {
 		let main = this;
-		//let searchOn = false;
 		main.selectRecipesFromText();
 		if (main.searchOn === true) {
 			main.page.refreshPage();
@@ -61,7 +60,7 @@ export class Search2 {
 		this.page.items.forEach((item) => {
 			item.returnDropDown().addEventListener('click', function (e) {
 				main.currentTags.push(item.name);
-				console.log(main);
+				//	console.log(main);
 				main.selectRecipesFromTags();
 				main.allItemInputs.forEach((input) => {
 					input.value = '';
@@ -99,15 +98,10 @@ export class Search2 {
 	itemSearch() {
 		let main = this;
 		main.allItemInputs = [];
-		console.log(main);
 		main.page.types.forEach((type) => {
 			let query = 'input.bg-' + type.type;
 			let input = document.querySelector(query);
-			console.log(input);
-			console.log('hey');
 			main.allItemInputs.push(input);
-			console.log(main);
-
 			input.addEventListener('input', function (e) {
 				// page.page.hideAllDropDownButtons();
 				main.itemSearch = this.value.toLowerCase();
@@ -115,14 +109,17 @@ export class Search2 {
 				main.findTextInItems(main.itemSearch, main.formId);
 			});
 		});
-		//console.log(this);
 	}
 	findTextInItems(string, type) {
 		// console.log(string);
+		console.log('find text in tems');
+		console.log(this);
 		// console.log(type);
 		// console.log(this);
+		this.page.setAllDropDowns(); //back to
 		this.page.items.forEach((item) => {
 			if (item.visible === true) {
+				//onlyvisible items
 				if (item.type === type) {
 					item.visible = false;
 					if (item.name.toLowerCase().includes(string) === true) {

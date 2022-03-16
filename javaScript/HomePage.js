@@ -2,7 +2,7 @@ import { recipes } from './recipes.js';
 import { Meal } from './Meals.js';
 import { Appliance, ItemFactory, Ustensil } from './Items.js';
 import { DropDown } from './Dropdown.js';
-import { Search1 } from './Search1.js';
+//import { Search1 } from './Search1.js';
 import { Search2 } from './Search2.js';
 
 //console.log(recipes);
@@ -20,6 +20,7 @@ class HomePage {
 		this.runTags();
 		this.runDrops();
 		this.runSearch();
+		this.alert = document.getElementById('alert');
 	}
 	getAllRecipes() {
 		this.recipes = [];
@@ -49,7 +50,9 @@ class HomePage {
 			recipe.upDateCard();
 		});
 		this.setAllDropDowns();
+		this.alertCheck();
 	}
+
 	getAllItems() {
 		let page = this;
 		page.items = [];
@@ -92,40 +95,6 @@ class HomePage {
 		this.items.forEach((item) => {
 			item.visible = false;
 		});
-	}
-
-	countEachType() {
-		let page = this;
-		let ingred = 0;
-		let ustens = 0;
-		let appli = 0;
-		let total = 0;
-		for (let i = 0; i < page.items.length; i++) {
-			console.log(page.items[i].type);
-			if (page.items[i].type === 'appliance') {
-				appli++;
-				total++;
-			}
-			if (page.items[i].type === 'ingredient') {
-				ingred++;
-				total++;
-			}
-			if (page.items[i].type === 'ustensil') {
-				ustens++;
-				total++;
-			} else {
-				// console.log('erreur');
-				// console.log(page.items[i]);
-			}
-		}
-		console.log('appli');
-		console.log(appli);
-		console.log('ingred');
-		console.log(ingred);
-		console.log('ustens');
-		console.log(ustens);
-		console.log('total');
-		console.log(total);
 	}
 
 	writeAllTags() {
@@ -177,7 +146,7 @@ class HomePage {
 
 	buildDropDown() {
 		let page = this;
-		console.log(page);
+		//console.log(page);
 		this.types.forEach((type) => {
 			//console.log(type);
 			let menu = new DropDown(this, type);
@@ -190,6 +159,7 @@ class HomePage {
 	}
 
 	setAllDropDowns() {
+		//gets visible recipes, turns items to visible, refresh
 		let main = this;
 		main.setAllDropDownFalse();
 		//	console.log('setAllDropDownFalse');
@@ -206,6 +176,9 @@ class HomePage {
 							) {
 								main.items[b].visible = true;
 							}
+							// else {
+							// 	main.items[b].visible = false;
+							// }
 						}
 					}
 				}
@@ -224,13 +197,33 @@ class HomePage {
 			if (item.visible === false) {
 				item.hideDropDown();
 			}
-			//else ;
 		});
 	}
 
 	runSearch() {
 		//console.log(this);
 		let search = new Search2(this);
+	}
+	alertOn() {
+		this.alert = document.getElementById('alert');
+		this.alert.classList.remove('hidden');
+	}
+	alertOff() {
+		//this.alert = document.getElementById('alert');
+		this.alert.classList.add('hidden');
+	}
+	alertCheck() {
+		let allHidden = true;
+		this.recipes.forEach((recipe) => {
+			if (recipe.visible === true) {
+				allHidden = false;
+			}
+		});
+		if (allHidden === true) {
+			this.alertOn();
+		} else {
+			this.alertOff();
+		}
 	}
 }
 

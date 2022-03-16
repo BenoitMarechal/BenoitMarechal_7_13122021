@@ -110,10 +110,10 @@ export class Search1 {
 			let input = document.querySelector(query);
 			//console.log(input);
 			input.addEventListener('input', function (e) {
-				console.log(this.value);
+				//	console.log(this.value);
 				// page.page.hideAllDropDownButtons();
 				page.itemSearch = this.value;
-				console.log(page);
+				//	console.log(page);
 				page.formId = type.type;
 				page.findTextInItems(page.itemSearch, page.formId);
 			});
@@ -157,12 +157,12 @@ export class Search1 {
 		main.page.items.forEach((item) => {
 			item.returnDropDown().addEventListener('click', function (e) {
 				main.activeFilters.push(item.name);
-				console.log('main');
+				//	console.log('main');
 				main.filterRecipes();
 			});
 			item.returnTagButton().addEventListener('click', function (e) {
 				main.remove(main.activeFilters, item.name);
-				console.log(main);
+				//console.log(main);
 				main.filterRecipes();
 			});
 		});
@@ -170,7 +170,7 @@ export class Search1 {
 
 	filterRecipes() {
 		let main = this;
-		console.log('cocou3');
+		//console.log('cocou3');
 		main.page.recipes.forEach(
 			(recipe) => {
 				recipe.tagSearched = false;
@@ -182,8 +182,8 @@ export class Search1 {
 						}
 					}
 				}
-				console.log(recipe);
-				console.log(matches);
+				//console.log(recipe);
+				//	console.log(matches);
 				if (matches === main.currentTags.length) {
 					recipe.searchedByTags = true;
 				}

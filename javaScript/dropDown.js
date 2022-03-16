@@ -199,12 +199,12 @@ export class DropDown {
 	hidePannel() {
 		this.pannel.classList.add('hidden');
 		this.arrow.firstChild.classList.remove('arrow-up');
-		console.log('hidden pannel');
+		//console.log('hidden pannel');
 	}
 	displayPannel() {
 		this.pannel.classList.remove('hidden');
 		this.arrow.firstChild.classList.add('arrow-up');
-		console.log('display pannel');
+		//console.log('display pannel');
 		//this.arrow.firstChild.classList.toggle('arrow-up');
 		//this.pannel.style.display = 'flex';
 		//this.arrow.firstChild.classList.toggle('arrow-up');
@@ -213,7 +213,7 @@ export class DropDown {
 		//this.pannel.style.display = 'flex';
 		this.pannel.classList.toggle('hidden');
 		this.arrow.firstChild.classList.toggle('arrow-up');
-		console.log('hideshow');
+		//console.log('hideshow');
 	}
 
 	listenMenu() {
@@ -221,7 +221,7 @@ export class DropDown {
 		//	console.log(menu.pannel);
 		////click on arrow: Opens/Closes alternatively
 		this.arrow.addEventListener('click', function (e) {
-			console.log('click');
+			//console.log('click');
 			menu.hideShowPannel();
 		});
 		////click on text area: Opens if closed, on fisrt click only

@@ -6,16 +6,7 @@ export function simplify(string) {
 let elementsOfTagBtn = {
 	typeOfElement: ['div', 'div', 'div', 'div'],
 	classesOfElement: [
-		[
-			'col',
-			'col-12',
-			'col-sm-6',
-			'col-md-4',
-			'col-lg-3',
-			'item',
-			'mb-1',
-			//'hidden',
-		],
+		['col', 'col-12', 'col-sm-6', 'col-md-4', 'col-lg-3', 'item', 'mb-1'],
 		[
 			'item-tag',
 			'rounded',
@@ -116,15 +107,12 @@ export class Item {
 		//if (this.returnTagButton().style.display === 'none') {
 		this.returnDropDown().style.display = 'block';
 		this.visible = true;
-		console.log('showed DropDown' + this.name + this.visible);
 		//}
 	}
 
 	hideDropDown() {
 		this.returnDropDown().style.display = 'none';
 		this.visible = false;
-		console.log('hidDropDown' + this.name + this.visible);
-		//console.log()
 	}
 	selectOn() {
 		this.displayTagButton();
@@ -146,9 +134,7 @@ export class Item {
 	}
 	listenToDrop() {
 		let item = this;
-		//console.log(item.returnTagButton());
 		item.returnDropDown().addEventListener('click', function (e) {
-			//console.log('click');
 			item.selectOn();
 		});
 	}

@@ -58,7 +58,7 @@ export class ContactModal {
 		this.DOMelement.addEventListener('submit', function (e) {
 			e.preventDefault();
 			for (let i = 0; i < modal.contactForm.id.length; i++) {
-				console.log(modal.contactForm.id[i] + ' ' + modal.contactForm.value[i]);
+				//console.log(modal.contactForm.id[i] + ' ' + modal.contactForm.value[i]);
 			}
 			this.style.display = 'none';
 		});
