@@ -1,7 +1,7 @@
 import { recipes } from './recipes.js';
 import { Meal } from './Meals.js';
 import { Appliance, ItemFactory, Ustensil } from './Items.js';
-import { DropDown } from './Dropdown.js';
+import { DropDown } from './dropDown.js';
 //import { Search1 } from './Search1.js';
 import { Search2 } from './Search2.js';
 
