@@ -17,7 +17,7 @@ let elementsOfCards = {
 		'div',
 	],
 	classesOfElement: [
-		['col', 'col-12', 'col-sm-4', 'cardsGalleryCol'],
+		['col', 'col-12', 'col-lg-4', 'cardsGalleryCol'],
 		['meal'],
 		['meal__img', 'text-center', 'bg-empty-image'],
 		['meal__txt', 'bg-light-grey'],
@@ -119,12 +119,15 @@ export class Meal {
 		for (let a = 0; a < meal.ingredients.length; a++) {
 			let type = document.createElement('span');
 			type.classList.add('meal__txt__lower__ingredient__type');
-			type.innerText = meal.ingredients[a].ingredient;
+
+			// type.innerText = meal.ingredients[a].ingredient + ':';
 			let quantity = document.createElement('span');
 			quantity.classList.add('meal__txt__lower__ingredient__qty');
 			if (meal.ingredients[a].quantity !== undefined) {
+				type.innerText = meal.ingredients[a].ingredient + ':';
 				quantity.innerText = ' ' + meal.ingredients[a].quantity + ' ';
 			} else {
+				type.innerText = meal.ingredients[a].ingredient;
 				quantity.innerText = '';
 			}
 

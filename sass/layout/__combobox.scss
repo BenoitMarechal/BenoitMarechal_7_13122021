@@ -32,20 +32,6 @@ input:focus {
 	//background-color: blue;
 }
 
-// .arrow:hover {
-// 	// box-shadow: 2px -2px 0 2px orchid inset;
-// 	// -webkit-box-shadow: 4px -4px orchid inset;
-// 	transform: rotate(-45deg);
-// 	top: 6px;
-// }
-
-// .arrow:focus {
-// 	// box-shadow: 2px -2px 0 2px orchid inset;
-// 	// -webkit-box-shadow: 4px -4px orchid inset;
-// 	transform: rotate(-45deg);
-// 	top: 6px;
-// }
-
 .arrow-up {
 	transform: rotate(135deg) !important;
 	top: -6px !important;
@@ -68,6 +54,13 @@ input:focus {
 nav {
 	position: relative;
 }
+.item-droplist__col__row {
+	border-radius: 0px 5px 5px 5px;
+}
+
+.droplist-container {
+	position: absolute;
+}
 // .item-search {
 // 	position: relative;
 // }
@@ -83,9 +76,7 @@ nav {
 // .col {
 // 	border: 1px solid red;
 // }
-.droplist-container {
-	position: absolute;
-}
+
 // .custom-select select {
 // 	display: none; /*hide original SELECT element:*/
 // }
@@ -185,6 +176,17 @@ nav {
 // 	width: 80%;
 // 	height: 2px;
 // }
-.item-droplist__col__row {
-	border-radius: 0px 5px 5px 5px;
-}
+
+// .arrow:hover {
+// 	// box-shadow: 2px -2px 0 2px orchid inset;
+// 	// -webkit-box-shadow: 4px -4px orchid inset;
+// 	transform: rotate(-45deg);
+// 	top: 6px;
+// }
+
+// .arrow:focus {
+// 	// box-shadow: 2px -2px 0 2px orchid inset;
+// 	// -webkit-box-shadow: 4px -4px orchid inset;
+// 	transform: rotate(-45deg);
+// 	top: 6px;
+// }

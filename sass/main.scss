@@ -31,6 +31,10 @@ $custom-theme-colors: (
 	color: white;
 }
 
+.h1 {
+	color: #d04f4f;
+}
+
 // .container-fluid {
 // 	border: 5px solid green;
 // }
@@ -53,10 +57,17 @@ $custom-theme-colors: (
 	height: 300px;
 }
 
-.meal__txt__lower__ingredient,
+.meal__txt__lower__ingredient__type,
 .meal__txt__upper__time {
 	font-weight: 700;
 }
+
+// .meal__txt__lower {
+// 	&__ingredient {
+// 		font-weight: 700;
+// 	}
+// }
+
 .hidden {
 	display: none;
 }

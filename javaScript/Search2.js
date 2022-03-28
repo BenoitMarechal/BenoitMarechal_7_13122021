@@ -1,3 +1,5 @@
+//import { Item } from './Items';
+
 export class Search2 {
 	constructor(page) {
 		this.page = page;
@@ -15,9 +17,10 @@ export class Search2 {
 	}
 	getMainSearch() {
 		let main = this;
-		main.searchOn = false;
+		// main.searchOn = false;
 		let textArea = document.querySelector('input');
 		textArea.addEventListener('input', function (e) {
+			main.searchOn = false;
 			main.mainSearch = this.value.toLowerCase();
 			//console.log(main);
 			if (main.mainSearch.length > 2) {
@@ -28,33 +31,132 @@ export class Search2 {
 	}
 	searchFromText() {
 		let main = this;
-		main.selectRecipesFromText();
+		main.selectRecipesFromText5();
 		if (main.searchOn === true) {
 			main.page.refreshPage();
 		}
 	}
-	selectRecipesFromText() {
-		//passe les recipe visible a true ou false
+	// selectRecipesFromText1() {
+	// 	//passe les recipe.visible a true ou false
+	// 	// = boucles natives = implementation1
+	// 	let main = this;
+	// 	let string = main.mainSearch;
+	// 	for (let a = 0; a < main.page.recipes.length; a++) {
+	// 		//main.page.recipes[a].textSearched = false;
+	// 		if (
+	// 			main.page.recipes[a].name.toLowerCase().includes(string) === true ||
+	// 			main.page.recipes[a].description.toLowerCase().includes(string) ===
+	// 				true ||
+	// 			main.page.recipes[a].ingredients.indexOf(string) !== -1
+	// 		) {
+	// 			main.page.recipes[a].textSearched = true;
+	// 		} else {
+	// 			main.page.recipes[a].textSearched = false;
+	// 		}
+	// 	}
+	// }
+
+	// selectRecipesFromText2() {
+	// 	//utilise filter
+	// 	//passe les recipe.visible a true ou false
+	// 	// = boucles natives = implementation1
+	// 	let main = this;
+	// 	let string = main.mainSearch;
+	// 	let filtered = this.page.recipes.filter(
+	// 		(recipe) =>
+	// 			recipe.name.toLowerCase().includes(string) === true ||
+	// 			recipe.description.toLowerCase().includes(string) === true ||
+	// 			recipe.ingredients.indexOf(string) !== -1
+	// 	);
+	// 	console.log(filtered);
+	// 	main.page.recipes.forEach((mainrecipe) => {
+	// 		console.log(mainrecipe);
+	// 		console.log(filtered.indexOf(mainrecipe));
+	// 		if (filtered.indexOf(mainrecipe) === -1) {
+	// 			mainrecipe.textSearched = false;
+	// 		} else mainrecipe.textSearched = true;
+	// 	});
+	// }
+
+	// selectRecipesFromText3() {
+	// 	//passe les recipe.visible a true ou false
+	// 	// = boucles natives = implementation1
+	// 	let main = this;
+	// 	let string = main.mainSearch;
+	// 	for (let a = 0; a < main.page.recipes.length; a++) {
+	// 		let ingredientFound = false;
+	// 		main.page.recipes[a].ingredients.forEach((ingredient) => {
+	// 			if (ingredient.ingredient.toLowerCase().includes(string)) {
+	// 				ingredientFound = true;
+	// 			}
+	// 		});
+
+	// 		//main.page.recipes[a].textSearched = false;
+	// 		if (
+	// 			main.page.recipes[a].name.toLowerCase().includes(string) === true ||
+	// 			main.page.recipes[a].description.toLowerCase().includes(string) ===
+	// 				true ||
+	// 			ingredientFound === true
+	// 			//main.page.recipes[a].ingredients.indexOf(string) !== -1
+	// 		) {
+	// 			main.page.recipes[a].textSearched = true;
+	// 		} else {
+	// 			main.page.recipes[a].textSearched = false;
+	// 		}
+	// 	}
+	// }
+
+	selectRecipesFromText4() {
+		//passe les recipe.visible a true ou false
 		// = boucles natives = implementation1
 		let main = this;
 		let string = main.mainSearch;
 		for (let a = 0; a < main.page.recipes.length; a++) {
-			main.page.recipes[a].textSearched = false;
 			let ingredientFound = false;
-			main.page.recipes[a].ingredients.forEach((ingredient) => {
-				if (ingredient.ingredient.toLowerCase().includes(string)) {
+			for (let b = 0; b < main.page.recipes[a].ingredients.length; b++)
+				//main.page.recipes[a].ingredients.forEach((ingredient) => {
+				if (
+					main.page.recipes[a].ingredients[b].ingredient
+						.toLowerCase()
+						.includes(string)
+				) {
 					ingredientFound = true;
 				}
-			});
+			//});
+
+			//main.page.recipes[a].textSearched = false;
 			if (
-				ingredientFound === true ||
 				main.page.recipes[a].name.toLowerCase().includes(string) === true ||
-				main.page.recipes[a].description.toLowerCase().includes(string) === true
+				main.page.recipes[a].description.toLowerCase().includes(string) ===
+					true ||
+				ingredientFound === true
+				//main.page.recipes[a].ingredients.indexOf(string) !== -1
 			) {
 				main.page.recipes[a].textSearched = true;
+			} else {
+				main.page.recipes[a].textSearched = false;
 			}
 		}
 	}
+
+	selectRecipesFromText5() {
+		//passe les recipe.visible a true ou false
+		// = boucles natives = implementation1
+		let main = this;
+		let string = main.mainSearch;
+		main.page.recipes.forEach((recipe) => {
+			if (
+				recipe.name.toLowerCase().includes(string) === true ||
+				recipe.description.toLowerCase().includes(string) === true ||
+				recipe.ingredients.indexOf(string) !== -1
+			) {
+				recipe.textSearched = true;
+			} else {
+				recipe.textSearched = false;
+			}
+		});
+	}
+
 	getCurrentTags() {
 		let main = this;
 		this.page.items.forEach((item) => {

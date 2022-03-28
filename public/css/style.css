@@ -56,12 +56,12 @@ nav {
   position: relative;
 }
 
-.droplist-container {
-  position: absolute;
-}
-
 .item-droplist__col__row {
   border-radius: 0px 5px 5px 5px;
+}
+
+.droplist-container {
+  position: absolute;
 }
 
 .bg-light-grey {
@@ -87,6 +87,10 @@ nav {
 .bg-ustensil {
   background-color: #ed6454;
   color: white;
+}
+
+.h1 {
+  color: #d04f4f;
 }
 
 /*!
@@ -11214,7 +11218,7 @@ textarea.form-control-lg {
   height: 300px;
 }
 
-.meal__txt__lower__ingredient,
+.meal__txt__lower__ingredient__type,
 .meal__txt__upper__time {
   font-weight: 700;
 }
