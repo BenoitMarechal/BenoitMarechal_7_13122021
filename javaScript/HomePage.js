@@ -2,10 +2,7 @@ import { recipes } from './recipes.js';
 import { Meal } from './Meals.js';
 import { Appliance, ItemFactory, Ustensil } from './Items.js';
 import { DropDown } from './dropDown.js';
-//import { Search1 } from './Search1.js';
-import { Search2 } from './Search2.js';
-
-//console.log(recipes);
+import { Search } from './Search.js';
 
 class HomePage {
 	constructor() {
@@ -25,7 +22,6 @@ class HomePage {
 	getAllRecipes() {
 		this.recipes = [];
 		recipes.forEach((recipe) => {
-			//	console.log(recipe);
 			this.recipes.push(new Meal(recipe));
 		});
 	}
@@ -57,24 +53,19 @@ class HomePage {
 		let page = this;
 		page.items = [];
 		let allItems = [];
-
 		//appliance
 		page.recipes.forEach((recipe) => {
 			allItems.push(new ItemFactory(new Appliance(recipe)));
-
 			////end appliance
-			////ingredient
 
+			////ingredient
 			recipe.ingredients.forEach((ingredient) => {
 				allItems.push(new ItemFactory(ingredient));
 			});
-
 			recipe.ustensils.forEach((ustensil) => {
-				//	console.log(ustensil);
 				allItems.push(new Ustensil(ustensil));
 			});
 		});
-		//page.items = allItems;
 		let result = [];
 		for (let i = 0; i < allItems.length; i++) {
 			let found = false;
@@ -87,9 +78,7 @@ class HomePage {
 				result.push(allItems[i]);
 			}
 		}
-		//	console.log(result);
 		page.items = result;
-		//console.log(page);
 	}
 	setAllDropDownFalse() {
 		this.items.forEach((item) => {
@@ -121,7 +110,6 @@ class HomePage {
 	gatherTypes() {
 		let page = this;
 		page.types = [];
-		let allTypes = [];
 		let result = [];
 
 		for (let i = 0; i < page.items.length; i++) {
@@ -135,20 +123,14 @@ class HomePage {
 				result.push(page.items[i]);
 			}
 		}
-		//	console.log(result);
-
 		result.splice(0, 0, result[1]);
 		result.splice(2, 1);
-		//	console.log(result);
-
 		page.types = result;
 	}
 
 	buildDropDown() {
 		let page = this;
-		//console.log(page);
 		this.types.forEach((type) => {
-			//console.log(type);
 			let menu = new DropDown(this, type);
 		});
 	}
@@ -162,34 +144,26 @@ class HomePage {
 		//gets visible recipes, turns items to visible, refresh
 		let main = this;
 		main.setAllDropDownFalse();
-		//	console.log('setAllDropDownFalse');
-		//console.log(main);
 		main.recipes.forEach((recipe) => {
 			if (recipe.visible === true) {
 				for (let a = 0; a < recipe.mealItems.length; a++) {
 					{
 						for (let b = 0; b < main.items.length; b++) {
-							//console.log(main.items[b].returnTagButton());
 							if (
 								recipe.mealItems[a].name === main.items[b].name &&
 								main.items[b].returnTagButton().style.display !== 'block'
 							) {
 								main.items[b].visible = true;
 							}
-							// else {
-							// 	main.items[b].visible = false;
-							// }
 						}
 					}
 				}
 			}
 		});
-		//console.log(main);
 		main.updateDropDowns();
 	}
 
 	updateDropDowns() {
-		//this.setAllDropDownFalse();
 		this.items.forEach((item) => {
 			if (item.visible === true) {
 				item.diplayDropDown();
@@ -201,15 +175,13 @@ class HomePage {
 	}
 
 	runSearch() {
-		//console.log(this);
-		let search = new Search2(this);
+		let search = new Search(this);
 	}
 	alertOn() {
 		this.alert = document.getElementById('alert');
 		this.alert.classList.remove('hidden');
 	}
 	alertOff() {
-		//this.alert = document.getElementById('alert');
 		this.alert.classList.add('hidden');
 	}
 	alertCheck() {
@@ -228,13 +200,3 @@ class HomePage {
 }
 
 let homepage = new HomePage();
-
-//console.log(homepage);
-//homepage.items[0].selectOff();
-//homepage.items[1].selectOff();
-// console.log(homepage.types[2]);
-
-//let drop = new DropDown(homepage.types[2]);
-
-// homepage.items[0].writeTagButton();
-// homepage.items[0].displayTagButton();

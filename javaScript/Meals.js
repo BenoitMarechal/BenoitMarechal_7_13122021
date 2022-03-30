@@ -17,10 +17,10 @@ let elementsOfCards = {
 		'div',
 	],
 	classesOfElement: [
-		['col', 'col-12', 'col-lg-4', 'cardsGalleryCol'],
+		['col', 'col-12', 'col-lg-6', 'col-xl-4', 'cardsGalleryCol'],
 		['meal'],
 		['meal__img', 'text-center', 'bg-empty-image'],
-		['meal__txt', 'bg-light-grey'],
+		['meal__txt', 'bg-light-grey', 'container'],
 		['row', 'meal__txt__upper', 'd-flex', 'justify-content-between'],
 		['col', 'h2', 'col-8', 'meal__txt__upper__title'],
 		[
@@ -39,18 +39,11 @@ let elementsOfCards = {
 			'overflow-hidden',
 			'mb-3',
 		],
-		['col', 'col-8', 'meal__txt__lower__ingredient'],
+		['col', 'col-5', 'meal__txt__lower__ingredient'],
 		['meal__txt__lower__ingredient__type'],
 		['meal__txt__lower__ingredient__qty'],
 		['meal__txt__lower__ingredient__unit'],
-		[
-			'col',
-			'col-4',
-			'meal__txt__lower__recipe',
-			'd-flex',
-			'justify-content-end',
-			'align-item-center',
-		],
+		['col', 'col-7', 'meal__txt__lower__recipe'],
 	],
 	parentsOfElements: [
 		'cardsGalleryRow',
@@ -86,7 +79,6 @@ export class Meal {
 	}
 	writeCard() {
 		let meal = this;
-		//console.log(this);
 		for (let i = 0; i < elementsOfCards.typeOfElement.length; i++) {
 			let element = document.createElement(elementsOfCards.typeOfElement[i]);
 			for (let a = 0; a < elementsOfCards.classesOfElement[i].length; a++) {
@@ -109,9 +101,8 @@ export class Meal {
 		articleToFill.querySelector('.meal__txt__upper__title').innerText =
 			meal.name;
 
-		articleToFill.querySelector('.meal__txt__upper__time').innerText =
-			meal.time + ' min';
-		//	resoudre probleme icone
+		articleToFill.querySelector('.meal__txt__upper__time').innerHTML =
+			'<i class="bi bi-clock"></i>' + '\xa0' + meal.time + 'min';
 
 		articleToFill.querySelector('.meal__txt__lower__recipe').innerText =
 			meal.description;
@@ -120,7 +111,6 @@ export class Meal {
 			let type = document.createElement('span');
 			type.classList.add('meal__txt__lower__ingredient__type');
 
-			// type.innerText = meal.ingredients[a].ingredient + ':';
 			let quantity = document.createElement('span');
 			quantity.classList.add('meal__txt__lower__ingredient__qty');
 			if (meal.ingredients[a].quantity !== undefined) {
@@ -150,7 +140,6 @@ export class Meal {
 		}
 	}
 	returnCard() {
-		//console.log(document.getElementById('id' + this.id));
 		return document.getElementById('id' + this.id);
 	}
 
@@ -173,7 +162,6 @@ export class Meal {
 	}
 	groupItems() {
 		this.mealItems = [];
-		//	console.log(this.appliance);
 		this.mealItems.push(new ItemFactory(new Appliance(this)));
 
 		this.ingredients.forEach((ingredient) => {
@@ -181,7 +169,6 @@ export class Meal {
 		});
 
 		this.ustensils.forEach((ustensil) => {
-			//	console.log(ustensil);
 			this.mealItems.push(new Ustensil(ustensil));
 		});
 	}

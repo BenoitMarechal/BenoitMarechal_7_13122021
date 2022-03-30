@@ -3,13 +3,13 @@ let elementsOfFirstLine = {
 	classesOfElement: [
 		[
 			'col',
-			'col-2',
-			//'p-0',
+			'col-12',
 			'd-flex',
 			'me-1',
 			'rounded-top',
 			'justify-content-between',
 			'item-search__row__col',
+			'col-lg-2',
 		],
 		[
 			'item-input',
@@ -24,16 +24,12 @@ let elementsOfFirstLine = {
 			'item-search__row__col__arrow-container',
 		],
 		['arrow', 'arrow-down', 'item-search__row__col__arrow-container__arrow'],
-		// ['row', 'item-droplist'],
-		// ['col', 'col-2', 'me-1', 'item-droplist__spacer', 'bg-ingredient'],
 	],
 	parentsOfElements: [
 		'item-search__row',
 		'item-search__row__col',
 		'item-search__row__col',
 		'item-search__row__col__arrow-container',
-		// 'dropserach-container__pannel',
-		// 'item-droplist',
 	],
 };
 
@@ -41,8 +37,8 @@ let elementsOfPannelStructureA = {
 	typeOfElement: ['div', 'div', 'div'],
 	classesOfElement: [
 		['row', 'item-droplist', 'w-75', 'm-0'],
-		['col', 'col-2', 'me-1', 'item-droplist__spacer'],
-		['col', 'col-2', 'me-1', 'item-droplist__spacer'],
+		['col', 'col-12', 'col-lg-2', 'me-1', 'item-droplist__spacer'],
+		['col', 'col-12', 'col-lg-2', 'me-1', 'item-droplist__spacer'],
 	],
 	parentsOfElements: [
 		'dropsearch-container__pannel',
@@ -65,29 +61,18 @@ export class DropDown {
 		this.page = page;
 		this.type = type;
 		this.testItem();
-		// console.log(this.type);
-		// console.log(this.stagg2);
 		this.writeFirstline();
 		this.writePannel();
-		//this.hidePannel();
 		this.listenMenu();
-		//this.listenOpenPannel();
-		this.page.test = 'kjh';
 	}
 	testItem() {
 		let menu = this;
 		let mainpage = this.page;
-		//console.log(mainpage);
 		let currentType = this.type;
-		//console.log(currentType);
-		menu.stagg2 = '';
-
+		menu.stagg = '';
 		for (let a = 0; a < mainpage.types.length; a++) {
-			//console.log(mainpage.types[a].type);
 			if (mainpage.types[a].type === currentType.type) {
-				//console.log('yep');
-				//	console.log(a);
-				menu.stagg2 = a;
+				menu.stagg = a;
 			}
 		}
 	}
@@ -112,23 +97,20 @@ export class DropDown {
 			let byClass = document.getElementsByClassName(
 				elementsOfFirstLine.parentsOfElements[i]
 			);
-			let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
+			let parent = byClass.item(byClass.length - 1);
+			//declares last element of collection as parent
 			parent.appendChild(element);
 		}
 		//empty article created
-
 		let articleToFill = document.getElementById('item-search-' + type.type);
-
 		articleToFill.querySelector('.item-search__row__col__input').placeholder =
 			type.properName;
-		//});
 	}
 
 	writePannel() {
-		////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		let mainpage = this.page;
+		//Structure A
 		let currentType = this.type;
-		let stagger = this.stagg2;
+		let stagger = this.stagg;
 		for (let b = 0; b < stagger + 1; b++) {
 			let element = document.createElement(
 				elementsOfPannelStructureA.typeOfElement[b]
@@ -152,9 +134,7 @@ export class DropDown {
 			let parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
 			parent.appendChild(element);
 		}
-		//}
-		///BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-		//for (let a = 0; a < mainpage.types.length; a++) {
+		//Structure B
 		for (let b = 0; b < elementsOfPannelStructureB.typeOfElement.length; b++) {
 			let element = document.createElement(
 				elementsOfPannelStructureB.typeOfElement[b]
@@ -199,47 +179,33 @@ export class DropDown {
 	hidePannel() {
 		this.pannel.classList.add('hidden');
 		this.arrow.firstChild.classList.remove('arrow-up');
-		//console.log('hidden pannel');
 	}
 	displayPannel() {
 		this.pannel.classList.remove('hidden');
 		this.arrow.firstChild.classList.add('arrow-up');
-		//console.log('display pannel');
-		//this.arrow.firstChild.classList.toggle('arrow-up');
-		//this.pannel.style.display = 'flex';
-		//this.arrow.firstChild.classList.toggle('arrow-up');
 	}
 	hideShowPannel() {
-		//this.pannel.style.display = 'flex';
 		this.pannel.classList.toggle('hidden');
 		this.arrow.firstChild.classList.toggle('arrow-up');
-		//console.log('hideshow');
 	}
 
 	listenMenu() {
 		let menu = this;
-		//	console.log(menu.pannel);
-		////click on arrow: Opens/Closes alternatively
+		//click on arrow: Opens/Closes alternatively
 		this.arrow.addEventListener('click', function (e) {
-			//console.log('click');
 			menu.hideShowPannel();
 		});
-		////click on text area: Opens if closed, on fisrt click only
+		//click on text area: Opens if closed, on fisrt click only
 		this.mainLine
 			.querySelector('input')
 			.addEventListener('click', function (e) {
 				menu.displayPannel();
 			});
-		/////click anywhere else
+		//click anywhere else
 		document.addEventListener('click', function (e) {
-			// console.log(e.target);
-			// console.log(e.target.parentNode);
 			if (e.target.parentNode === document) {
 				menu.hidePannel();
-			}
-			//console.log('bg-' + menu.type.type);
-			// if (menu.mainLine.contains(e.target) || menu.pannel.contains(e.target))
-			else if (
+			} else if (
 				e.target.classList.contains('bg-' + menu.type.type) ||
 				e.target.parentNode.classList.contains('bg-' + menu.type.type) ||
 				menu.arrow.contains(e.target)
@@ -249,7 +215,7 @@ export class DropDown {
 				menu.hidePannel();
 			}
 		});
-		///echap
+		//echap key
 		document.addEventListener('keydown', function (e) {
 			if (e.key == 'Escape') {
 				menu.hidePannel();

@@ -2,7 +2,6 @@ export function simplify(string) {
 	var reg = /[-,', ]/g;
 	return string.replace(reg, '_').toLowerCase();
 }
-
 let elementsOfTagBtn = {
 	typeOfElement: ['div', 'div', 'div', 'div'],
 	classesOfElement: [
@@ -32,8 +31,6 @@ export class Item {
 	writeTagButton() {
 		{
 			let item = this;
-			//console.log(item.type);
-			//console.log(this);
 			for (let i = 0; i < elementsOfTagBtn.typeOfElement.length; i++) {
 				let element = document.createElement(elementsOfTagBtn.typeOfElement[i]);
 				for (let a = 0; a < elementsOfTagBtn.classesOfElement[i].length; a++) {
@@ -41,8 +38,6 @@ export class Item {
 						element.id = 'tag-' + item.simpName;
 					}
 					if (i === 1) {
-						//	console.log('yep');
-						//console.log(element);
 						element.classList.add('bg-' + item.type);
 					}
 					element.classList.add(elementsOfTagBtn.classesOfElement[i][a]);
@@ -55,8 +50,6 @@ export class Item {
 				if (i === 0) {
 					parent = document.getElementById('item-tag__container');
 				} else parent = byClass.item(byClass.length - 1); //declares last element of collection as parent
-				//console.log(parent);
-				//	console.log(element);
 
 				parent.appendChild(element);
 				//EMPTY ARTICLE CREATED
@@ -71,8 +64,6 @@ export class Item {
 		}
 	}
 	writeDropDownButton() {
-		let currentItem = this;
-		//for (let a = 0; a < mainpage.items.length; a++) {
 		let label = document.createElement('div');
 		label.classList.add('col');
 		label.classList.add('col-4');
@@ -81,11 +72,9 @@ export class Item {
 		label.setAttribute('role', 'button');
 		let parent = document.getElementById('droplist-btn-container-' + this.type);
 		parent.appendChild(label);
-		//}
 	}
 
 	returnTagButton() {
-		//	console.log(document.getElementById('tag-' + this.simpName));
 		return document.getElementById('tag-' + this.simpName);
 	}
 
@@ -100,14 +89,11 @@ export class Item {
 	}
 
 	returnDropDown() {
-		//	console.log(document.getElementById('drop-btn-' + this.simpName));
 		return document.getElementById('drop-btn-' + this.simpName);
 	}
 	diplayDropDown() {
-		//if (this.returnTagButton().style.display === 'none') {
 		this.returnDropDown().style.display = 'block';
 		this.visible = true;
-		//}
 	}
 
 	hideDropDown() {
@@ -119,7 +105,6 @@ export class Item {
 		this.hideDropDown();
 	}
 	selectOff() {
-		//console.log('jhg');
 		this.hideTagButton();
 		this.diplayDropDown();
 	}
@@ -128,7 +113,6 @@ export class Item {
 		this.returnTagButton()
 			.querySelector('.item-tag__close')
 			.addEventListener('click', function (e) {
-				console.log(this);
 				item.selectOff();
 			});
 	}
