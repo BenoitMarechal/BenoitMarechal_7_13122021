@@ -1,4 +1,5 @@
-const recipes = [
+////DATABASE
+let recipes = [
 	{
 		id: 1,
 		name: 'Limonade de Coco',
@@ -1775,38 +1776,45 @@ const recipes = [
 		ustensils: ['rouleau à patisserie', 'fouet'],
 	},
 ];
-//selectRecipesFromText4() {
-//passe les recipe.visible a true ou false
-// = boucles natives = implementation1
 
-let string = 'coco';
-for (let a = 0; a < recipes.length; a++) {
-	let ingredientFound = false;
-	for (let b = 0; b < recipes[a].ingredients.length; b++)
-		if (recipes[a].ingredients[b].ingredient.toLowerCase().includes(string)) {
-			ingredientFound = true;
-		}
-	if (
-		recipes[a].name.toLowerCase().includes(string) === true ||
-		recipes[a].description.toLowerCase().includes(string) === true ||
-		ingredientFound === true
-	) {
-		return true;
-	} else {
-		return false;
-	}
-}
+////SEARCH1
 
-//selectRecipesFromText5() {
-let string = 'coco';
-recipes.forEach((recipe) => {
-	if (
-		recipe.name.toLowerCase().includes(string) === true ||
-		recipe.description.toLowerCase().includes(string) === true ||
-		recipe.ingredients.indexOf(string) !== -1
-	) {
-		return true;
-	} else {
-		return false;
-	}
-});
+    let string = 'coco';
+    for (let a = 0; a < recipes.length; a++) {
+        let ingredientFound = false;
+        for (let b = 0; b < recipes[a].ingredients.length; b++)
+            if (
+                recipes[a].ingredients[b].ingredient
+                    .toLowerCase()
+                    .includes(string)
+            ) {
+                ingredientFound = true;
+            }
+
+        if (
+            recipes[a].name.toLowerCase().includes(string) === true ||
+            recipes[a].description.toLowerCase().includes(string) ===
+                true ||
+            ingredientFound === true
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+/////SEARCH 2
+
+		let string = 'coco';
+		recipes.forEach((recipe) => {
+			if (
+				recipe.name.toLowerCase().includes(string) === true ||
+				recipe.description.toLowerCase().includes(string) === true ||
+				recipe.ingredients.indexOf(string) !== -1
+			) {
+				return true;
+			} else {
+				return false;
+			}
+		});
+
