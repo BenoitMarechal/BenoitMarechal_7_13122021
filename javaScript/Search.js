@@ -26,57 +26,57 @@ export class Search {
 	}
 	searchFromText() {
 		let main = this;
-		main.selectRecipesFromText1();
+		main.selectRecipesFromText2();
 		if (main.searchOn === true) {
 			main.page.refreshPage();
 		}
 	}
-	selectRecipesFromText1() {
-		//passe les recipe.visible a true ou false
-		// = boucles natives = implementation1
-		let main = this;
-		let string = main.mainSearch;
-		for (let a = 0; a < main.page.recipes.length; a++) {
-			let ingredientFound = false;
-			for (let b = 0; b < main.page.recipes[a].ingredients.length; b++)
-				if (
-					main.page.recipes[a].ingredients[b].ingredient
-						.toLowerCase()
-						.includes(string)
-				) {
-					ingredientFound = true;
-				}
-
-			if (
-				main.page.recipes[a].name.toLowerCase().includes(string) === true ||
-				main.page.recipes[a].description.toLowerCase().includes(string) ===
-					true ||
-				ingredientFound === true
-			) {
-				main.page.recipes[a].textSearched = true;
-			} else {
-				main.page.recipes[a].textSearched = false;
-			}
-		}
-	}
-
-	// selectRecipesFromText2() {
+	// selectRecipesFromText1() {
 	// 	//passe les recipe.visible a true ou false
-	// 	// utilisation de boucles forEach et de indexOf()
+	// 	// = boucles natives = implementation1
 	// 	let main = this;
 	// 	let string = main.mainSearch;
-	// 	main.page.recipes.forEach((recipe) => {
+	// 	for (let a = 0; a < main.page.recipes.length; a++) {
+	// 		let ingredientFound = false;
+	// 		for (let b = 0; b < main.page.recipes[a].ingredients.length; b++)
+	// 			if (
+	// 				main.page.recipes[a].ingredients[b].ingredient
+	// 					.toLowerCase()
+	// 					.includes(string)
+	// 			) {
+	// 				ingredientFound = true;
+	// 			}
+
 	// 		if (
-	// 			recipe.name.toLowerCase().includes(string) === true ||
-	// 			recipe.description.toLowerCase().includes(string) === true ||
-	// 			recipe.ingredients.indexOf(string) !== -1
+	// 			main.page.recipes[a].name.toLowerCase().includes(string) === true ||
+	// 			main.page.recipes[a].description.toLowerCase().includes(string) ===
+	// 				true ||
+	// 			ingredientFound === true
 	// 		) {
-	// 			recipe.textSearched = true;
+	// 			main.page.recipes[a].textSearched = true;
 	// 		} else {
-	// 			recipe.textSearched = false;
+	// 			main.page.recipes[a].textSearched = false;
 	// 		}
-	// 	});
+	// 	}
 	// }
+
+	selectRecipesFromText2() {
+		//passe les recipe.visible a true ou false
+		// utilisation de boucles forEach et de indexOf()
+		let main = this;
+		let string = main.mainSearch;
+		main.page.recipes.forEach((recipe) => {
+			if (
+				recipe.name.toLowerCase().includes(string) === true ||
+				recipe.description.toLowerCase().includes(string) === true ||
+				recipe.ingredients.indexOf(string) !== -1
+			) {
+				recipe.textSearched = true;
+			} else {
+				recipe.textSearched = false;
+			}
+		});
+	}
 
 	getCurrentTags() {
 		let main = this;
