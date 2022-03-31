@@ -26,12 +26,12 @@ export class Search {
 	}
 	searchFromText() {
 		let main = this;
-		main.selectRecipesFromText4();
+		main.selectRecipesFromText1();
 		if (main.searchOn === true) {
 			main.page.refreshPage();
 		}
 	}
-	selectRecipesFromText4() {
+	selectRecipesFromText1() {
 		//passe les recipe.visible a true ou false
 		// = boucles natives = implementation1
 		let main = this;
@@ -60,23 +60,23 @@ export class Search {
 		}
 	}
 
-	selectRecipesFromText5() {
-		//passe les recipe.visible a true ou false
-		// utilisation de boucles forEach et de indexOf()
-		let main = this;
-		let string = main.mainSearch;
-		main.page.recipes.forEach((recipe) => {
-			if (
-				recipe.name.toLowerCase().includes(string) === true ||
-				recipe.description.toLowerCase().includes(string) === true ||
-				recipe.ingredients.indexOf(string) !== -1
-			) {
-				recipe.textSearched = true;
-			} else {
-				recipe.textSearched = false;
-			}
-		});
-	}
+	// selectRecipesFromText2() {
+	// 	//passe les recipe.visible a true ou false
+	// 	// utilisation de boucles forEach et de indexOf()
+	// 	let main = this;
+	// 	let string = main.mainSearch;
+	// 	main.page.recipes.forEach((recipe) => {
+	// 		if (
+	// 			recipe.name.toLowerCase().includes(string) === true ||
+	// 			recipe.description.toLowerCase().includes(string) === true ||
+	// 			recipe.ingredients.indexOf(string) !== -1
+	// 		) {
+	// 			recipe.textSearched = true;
+	// 		} else {
+	// 			recipe.textSearched = false;
+	// 		}
+	// 	});
+	// }
 
 	getCurrentTags() {
 		let main = this;
