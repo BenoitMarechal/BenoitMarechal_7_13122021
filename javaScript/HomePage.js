@@ -178,7 +178,7 @@ class HomePage {
 		let search = new Search(this);
 	}
 	alertOn() {
-		this.alert = document.getElementById('alert');
+		//this.alert = document.getElementById('alert');
 		this.alert.classList.remove('hidden');
 	}
 	alertOff() {
